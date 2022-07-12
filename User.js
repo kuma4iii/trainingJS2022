@@ -5,7 +5,7 @@ window.onload = function() {
 let dialog; // ダイアログ要素
 let message_dialog; // メッセージ
 
-function showDialog(button) {
+function showEditDialog(button) {
     
     const tr = button.closest('tr');
 
@@ -25,4 +25,30 @@ function showDialog(button) {
 
     // ダイアログ表示
     dialog.showModal();
+}
+
+function showCreateDialog(button) {
+    
+    dialog = document.getElementById('dialog'); // ダイアログ要素取得
+
+    // ダイアログ表示
+    dialog.showModal();
+}
+
+function okDialog(button) {
+    const input_name = document.getElementById('name');
+    const input_age = document.getElementById('age');
+    const input_gender = document.getElementById('gender');
+    const input_address = document.getElementById('address');
+
+    console.log =(input_name.value + input_age.value + input_gender.value + input_address.value);
+
+    dialog.close();
+}
+
+function cancelDialog() {
+
+    console.log = "キャンセルボタンが押下されました。";
+
+    dialog.close();
 }

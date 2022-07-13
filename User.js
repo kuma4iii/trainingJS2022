@@ -23,6 +23,8 @@ function okDialog(button) {
 
     console.log(input_name.value + input_age.value + input_gender.value + input_address.value);
 
+    
+
     // touroku
 
     dialog.close();

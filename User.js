@@ -23,7 +23,21 @@ function okDialog(button) {
 
     console.log(input_name.value + input_age.value + input_gender.value + input_address.value);
 
-    
+    var mytable = document.getElementById("tbl");
+ 
+    var mytr = mytable.insertRow(1);
+ 
+    //セルの追加
+    var mycell1 = mytr.insertCell(0);
+    var mycell2 = mytr.insertCell(1);
+    var mycell3 = mytr.insertCell(2);
+    var mycell4 = mytr.insertCell(3);
+ 
+    //textContentでもいいしinnnerHTMLでもいいし
+    mycell1.innerHTML = input_name.value;
+    mycell2.innerHTML = input_age.value;
+    mycell3.innerHTML = input_gender.value;
+    mycell4.innerHTML = input_address.value;
 
     // touroku
 

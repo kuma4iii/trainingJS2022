@@ -72,7 +72,6 @@ function okDialog(button) {
 	    age--;
 	}
 
-
     var mytable = document.getElementById("tbl");
  
     var mytr = mytable.insertRow(1);
@@ -83,7 +82,6 @@ function okDialog(button) {
     var mycell3 = mytr.insertCell(2);
     var mycell4 = mytr.insertCell(3);
  
-    //textContentでもいいしinnnerHTMLでもいいし
     mycell1.innerHTML = input_name.value;
     mycell2.innerHTML = age;
     mycell3.innerHTML = input_gender.value;
@@ -134,7 +132,6 @@ function showEditDialog(button) {
     const input_gender2 = document.getElementById('gender2');
     const input_address2 = document.getElementById('address2');
  
-
     // 親要素
     var parent = button.parentNode;
 

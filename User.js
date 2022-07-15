@@ -50,12 +50,28 @@ function showCreateDialog(button) {
 
 //ユーザー登録okボタン
 function okDialog(button) {
+
     const input_name = document.getElementById('name');
     const input_age = document.getElementById('age');
     const input_gender = document.getElementById('gender');
     const input_address = document.getElementById('address');
 
     console.log(input_name.value + input_age.value + input_gender.value + input_address.value);
+
+    // 誕生日を保持したDateインスタンスを生成
+	var birthday = new Date(input_age.value);
+	
+	// 今日の日付を保持したDateインスタンスを生成
+	var today = new Date();
+
+	// 現在の年から誕生年を減算
+	var age = today.getFullYear() - birthday.getFullYear();
+
+	// 現在の年で誕生日が来ていなければ減算
+	if ( today < birthday.setFullYear( today.getFullYear() ) ){
+	    age--;
+	}
+
 
     var mytable = document.getElementById("tbl");
  
@@ -69,9 +85,11 @@ function okDialog(button) {
  
     //textContentでもいいしinnnerHTMLでもいいし
     mycell1.innerHTML = input_name.value;
-    mycell2.innerHTML = input_age.value;
+    mycell2.innerHTML = age;
     mycell3.innerHTML = input_gender.value;
     mycell4.innerHTML = input_address.value;
+
+    clearInput()
 
     // touroku
 
@@ -80,45 +98,59 @@ function okDialog(button) {
 
 //ユーザー登録キャンセルボタン
 function cancelDialog() {
-    const input_name = document.getElementById('name');
-    const input_age = document.getElementById('age');
-    const input_gender = document.getElementById('gender');
-    const input_address = document.getElementById('address');
 
-    input_name.value = "";
-    input_age.value = "";
-    input_gender.value = "";
-    input_address.value = "";
+    clearInput()
 
     console.log ("キャンセルボタンが押下されました。");
 
     dialog.close();
 }
 
+function clearInput(){
+    const input_name = document.getElementById('name');
+    const input_age = document.getElementById('age');
+    const input_gender = document.getElementById('gender');
+    const input_address = document.getElementById('address');
+    const input_name2 = document.getElementById('name2');
+    const input_age2 = document.getElementById('age2');
+    const input_gender2 = document.getElementById('gender2');
+    const input_address2 = document.getElementById('address2');
+
+    input_name.value = "";
+    input_age.value = "";
+    input_gender.value = "";
+    input_address.value = "";
+    input_name2.value = "";
+    input_age2.value = "";
+    input_gender2.value = "";
+    input_address2.value = "";
+
+}
+
 //編集ダイアログ
 function showEditDialog(button) {
-    const input_name = document.getElementById('name2');
-    const input_age = document.getElementById('age2');
-    const input_gender = document.getElementById('gender2');
-    const input_address = document.getElementById('address2');
+    const input_name2 = document.getElementById('name2');
+    const input_age2 = document.getElementById('age2');
+    const input_gender2 = document.getElementById('gender2');
+    const input_address2 = document.getElementById('address2');
  
 
     // 親要素
     var parent = button.parentNode;
 
     var address = parent.previousElementSibling;
-    console.log('address2', address.innerText);
+    console.log('address', address.innerText);
     var gender = address.previousElementSibling;
-    console.log('gender2', gender.innerText);
+    console.log('gender', gender.innerText);
     var age = gender.previousElementSibling;
-    console.log('age2', age.innerText);
+    console.log('age', age.innerText);
     var name = age.previousElementSibling;
-    console.log('name2', name.innerText);
+    console.log('name', name.innerText);
 
-    input_name.value = name.innerText;
-    input_age.value = age.innerText;
-    input_gender.value = gender.innerText;
-    input_address.value = address.innerText;
+    input_name2.value = name.innerText;
+    input_age2.value = age.innerText;
+    input_gender2.value = gender.innerText;
+    input_address2.value = address.innerText;
 
     dialog2 = document.getElementById('dialog2'); // ダイアログ要素取得
 
@@ -129,14 +161,28 @@ function showEditDialog(button) {
 
 //編集okボタン
 function ok2Dialog(button) {
-    const input_name = document.getElementById('name2');
-    const input_age = document.getElementById('age2');
-    const input_gender = document.getElementById('gender2');
-    const input_address = document.getElementById('address2');
+    const input_name2 = document.getElementById('name2');
+    const input_age2 = document.getElementById('age2');
+    const input_gender2 = document.getElementById('gender2');
+    const input_address2 = document.getElementById('address2');
 
-    console.log(input_name.value + input_age.value + input_gender.value + input_address.value);
+    // 誕生日を保持したDateインスタンスを生成
+	var birthday = new Date(input_age2.value);
+	
+	// 今日の日付を保持したDateインスタンスを生成
+	var today = new Date();
 
-    
+	// 現在の年から誕生年を減算
+	var age2 = today.getFullYear() - birthday.getFullYear();
+
+	// 現在の年で誕生日が来ていなければ減算
+	if ( today < birthday.setFullYear( today.getFullYear() ) ){
+	    age2--;
+	}
+
+    console.log(input_name2.value + age2 + input_gender2.value + input_address2.value);   
+
+    clearInput()
 
     // touroku
 
@@ -145,17 +191,10 @@ function ok2Dialog(button) {
 
 //編集キャンセルボタン
 function cancel2Dialog() {
-    const input_name = document.getElementById('name2');
-    const input_age = document.getElementById('age2');
-    const input_gender = document.getElementById('gender2');
-    const input_address = document.getElementById('address2');
-
-    input_name.value = "";
-    input_age.value = "";
-    input_gender.value = "";
-    input_address.value = "";
 
     console.log ("キャンセルボタンが押下されました。");
+
+    clearInput();
 
     dialog2.close();
 }

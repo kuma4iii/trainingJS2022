@@ -4,6 +4,40 @@ window.onload = function() {
 
 let dialog; // ダイアログ要素
 let message_dialog; // メッセージ
+let user_data = [  
+    {
+        "id" : 1,
+        "last_name" : "田中",
+        "first_name" : "太郎",
+        "gender" : 1,
+        "birth_date" : "1999/01/01",
+        "address" : "東京都"
+    },
+    {
+        "id" : 2,
+        "last_name" : "佐藤",
+        "first_name" : "花子",
+        "gender" : 2,
+        "birth_date" : "1995/01/01",
+        "address" : "埼玉県"
+    },
+    {
+        "id" : 3,
+        "last_name" : "伊藤",
+        "first_name" : "二郎",
+        "gender" : 1,
+        "birth_date" : "1997/01/01",
+        "address" : "北海道"
+    },
+    {
+        "id" : 4,
+        "last_name" : "小林",
+        "first_name" : "優子",
+        "gender" : 2,
+        "birth_date" : "1989/01/01",
+        "address" : "千葉県"
+    }
+]
 
 //ユーザー登録ダイアログ
 function showCreateDialog(button) {

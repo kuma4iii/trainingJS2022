@@ -1,5 +1,10 @@
 window.onload = function() {
+    var fruits = ['apple','orange','grape']
+    for (var user_json of user_data) {
 
+        addUser(user_json)
+
+    }
 }
 
 let dialog; // ダイアログ要素
@@ -38,6 +43,49 @@ let user_data = [
         "address" : "千葉県"
     }
 ]
+
+function addUser(user_json){
+    console.log(user_json.last_name + user_json.first_name);
+    console.log(user_json.birth_date);
+    console.log(user_json.gender);
+    console.log(user_json.address);
+
+    // 誕生日を保持したDateインスタンスを生成
+	var birthday = new Date(user_json.value);
+	
+	// 今日の日付を保持したDateインスタンスを生成
+	var today = new Date();
+
+	// 現在の年から誕生年を減算
+	var age = today.getFullYear() - birthday.getFullYear();
+
+	// 現在の年で誕生日が来ていなければ減算
+	if ( today < birthday.setFullYear( today.getFullYear() ) ){
+	    age--;
+	}
+
+    if(user_json.gender == 1){
+        user_json.gender = "男";
+    }else if(user_json.gender == 2){
+        user_json.gender = "女";
+    }else{
+        user_json.gender = "その他";
+    }
+    
+    var mytable = document.getElementById("tbl");
+    var mytr = mytable.insertRow(1);
+ 
+    //セルの追加
+    var mycell1 = mytr.insertCell(0);
+    var mycell2 = mytr.insertCell(1);
+    var mycell3 = mytr.insertCell(2);
+    var mycell4 = mytr.insertCell(3);
+ 
+    mycell1.innerHTML = user_json.last_name + user_json.first_name;
+    mycell2.innerHTML = user_json.birth_date;
+    mycell3.innerHTML = user_json.gender;
+    mycell4.innerHTML = user_json.address;
+}
 
 //ユーザー登録ダイアログ
 function showCreateDialog(button) {

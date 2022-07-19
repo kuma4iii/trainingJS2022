@@ -51,7 +51,7 @@ function addUser(user_json){
     console.log(user_json.address);
 
     // 誕生日を保持したDateインスタンスを生成
-	var birthday = new Date(user_json.value);
+	var birthday = new Date(user_json.birth_date);
 	
 	// 今日の日付を保持したDateインスタンスを生成
 	var today = new Date();
@@ -64,6 +64,9 @@ function addUser(user_json){
 	    age--;
 	}
 
+    user_json.birth_date = age;
+
+    // 性別の判定
     if(user_json.gender == 1){
         user_json.gender = "男";
     }else if(user_json.gender == 2){

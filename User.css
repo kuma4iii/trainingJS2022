@@ -1,0 +1,25 @@
+div{
+    /*background :#f0fff0*/
+}
+
+#parent {
+    background :red
+}
+
+.child {
+    width: 50%;
+}
+
+#c1 {
+    background :pink;
+}
+
+#c2{
+    background :green;
+}
+
+#c3{
+    background :blue;
+}
+
+

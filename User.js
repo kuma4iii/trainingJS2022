@@ -1,5 +1,4 @@
 window.onload = function() {
-    var fruits = ['apple','orange','grape']
     for (var user_json of user_data) {
 
         addUser(user_json)
@@ -14,24 +13,24 @@ let user_data = [
         "id" : 1,
         "last_name" : "田中",
         "first_name" : "太郎",
-        "gender" : 1,
-        "birth_date" : "1999/01/01",
+        "gender" : 0,
+        "birth_date" : "1999-01-01",
         "address" : "東京都"
     },
     {
         "id" : 2,
         "last_name" : "佐藤",
         "first_name" : "花子",
-        "gender" : 2,
-        "birth_date" : "1995/01/01",
+        "gender" : 1,
+        "birth_date" : "1995-01-01",
         "address" : "埼玉県"
     },
     {
         "id" : 3,
         "last_name" : "伊藤",
         "first_name" : "二郎",
-        "gender" : 1,
-        "birth_date" : "1997/01/01",
+        "gender" : 0,
+        "birth_date" : "1997-01-01",
         "address" : "北海道"
     },
     {
@@ -39,7 +38,7 @@ let user_data = [
         "last_name" : "小林",
         "first_name" : "優子",
         "gender" : 2,
-        "birth_date" : "1989/01/01",
+        "birth_date" : "1989-01-01",
         "address" : "千葉県"
     }
 ]
@@ -64,15 +63,16 @@ function addUser(user_json){
 	    age--;
 	}
 
-    user_json.birth_date = age;
+
 
     // 性別の判定
-    if(user_json.gender == 1){
-        user_json.gender = "男";
-    }else if(user_json.gender == 2){
-        user_json.gender = "女";
+    var gender_show;
+    if(user_json.gender == 0){
+        gender_show = "男";
+    }else if(user_json.gender == 1){
+        gender_show = "女";
     }else{
-        user_json.gender = "その他";
+        gender_show = "その他";
     }
     
     var mytable = document.getElementById("tbl");
@@ -85,9 +85,19 @@ function addUser(user_json){
     var mycell4 = mytr.insertCell(3);
  
     mycell1.innerHTML = user_json.last_name + user_json.first_name;
-    mycell2.innerHTML = user_json.birth_date;
-    mycell3.innerHTML = user_json.gender;
+    mycell2.innerHTML = age;
+    mycell3.innerHTML = gender_show;
     mycell4.innerHTML = user_json.address;
+
+    var mycell5 = document.createElement("td");
+    var input_text = document.createElement("input");
+    input_text.setAttribute("type", "button");
+    input_text.setAttribute("value", "編集");
+    input_text.setAttribute("onclick", "showEditDialog(event)");
+    input_text.setAttribute("id", user_json.id);
+    input_text.dataset.user_id = user_json.id;
+    mycell5.appendChild(input_text);
+    mytr.appendChild(mycell5);
 }
 
 //ユーザー登録ダイアログ
@@ -176,29 +186,23 @@ function clearInput(){
 
 }
 
+var user_editting;
+
 //編集ダイアログ
-function showEditDialog(button) {
+function showEditDialog(event) {
     const input_name2 = document.getElementById('name2');
     const input_age2 = document.getElementById('age2');
     const input_gender2 = document.getElementById('gender2');
     const input_address2 = document.getElementById('address2');
- 
-    // 親要素
-    var parent = button.parentNode;
 
-    var address = parent.previousElementSibling;
-    console.log('address', address.innerText);
-    var gender = address.previousElementSibling;
-    console.log('gender', gender.innerText);
-    var age = gender.previousElementSibling;
-    console.log('age', age.innerText);
-    var name = age.previousElementSibling;
-    console.log('name', name.innerText);
+    const user_id = event.target.dataset.user_id;
+    var user = user_data.find((v) => v.id == user_id);
+    user_editting = user;
+    input_name2.value = user.last_name + user.first_name;
+    input_age2.value = user.birth_date;
+    input_gender2.selectedIndex = user.gender;
+    input_address2.value = user.address;
 
-    input_name2.value = name.innerText;
-    input_age2.value = age.innerText;
-    input_gender2.value = gender.innerText;
-    input_address2.value = address.innerText;
 
     dialog2 = document.getElementById('dialog2'); // ダイアログ要素取得
 
@@ -228,7 +232,7 @@ function ok2Dialog(button) {
 	    age2--;
 	}
 
-    console.log(input_name2.value + age2 + input_gender2.value + input_address2.value);   
+    console.log(user_editting);   
 
     clearInput()
 

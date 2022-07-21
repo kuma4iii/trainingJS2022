@@ -243,12 +243,23 @@ function ok2Dialog(button) {
 	    age2--;
 	}
 
+    // 編集ダイアログに入力した値を画面に出力したい
+    input_last_name2 = document.getElementById("output");
+    input_first_name2 = document.getElementById("output");
+    input_age2 = document.getElementById("output");
+    input_gender2 = document.getElementById("output");
+    input_address2 = document.getElementById("output");
+
+    input_last_name2.innerText = document.forms.dialog2.last_name2.value;
+    input_first_name2.innerText = document.forms.dialog2.first_name2.value;
+    input_age2.innerText = document.forms.dialog2.age2.value;
+    input_gender2.innerText = document.forms.dialog2.gender2.value;
+    input_address2.innerText = document.forms.dialog2.address2.value;
+
     console.log(user_editting);   
 
     clearInput()
-
-    // touroku
-
+    
     dialog2.close();
 }
 

@@ -64,7 +64,6 @@ function addUser(user_json){
 	}
 
 
-
     // 性別の判定
     var gender_show;
     if(user_json.gender == 0){
@@ -83,21 +82,23 @@ function addUser(user_json){
     var mycell2 = mytr.insertCell(1);
     var mycell3 = mytr.insertCell(2);
     var mycell4 = mytr.insertCell(3);
- 
-    mycell1.innerHTML = user_json.last_name + user_json.first_name;
-    mycell2.innerHTML = age;
-    mycell3.innerHTML = gender_show;
-    mycell4.innerHTML = user_json.address;
+    var mycell5 = mytr.insertCell(4);
 
-    var mycell5 = document.createElement("td");
+    mycell1.innerHTML = user_json.last_name;
+    mycell2.innerHTML = user_json.first_name;
+    mycell3.innerHTML = age;
+    mycell4.innerHTML = gender_show;
+    mycell5.innerHTML = user_json.address;
+
+    var mycell6 = document.createElement("td");
     var input_text = document.createElement("input");
     input_text.setAttribute("type", "button");
     input_text.setAttribute("value", "編集");
     input_text.setAttribute("onclick", "showEditDialog(event)");
     input_text.setAttribute("id", user_json.id);
     input_text.dataset.user_id = user_json.id;
-    mycell5.appendChild(input_text);
-    mytr.appendChild(mycell5);
+    mycell6.appendChild(input_text);
+    mytr.appendChild(mycell6);
 }
 
 //ユーザー登録ダイアログ
@@ -112,12 +113,13 @@ function showCreateDialog(button) {
 //ユーザー登録okボタン
 function okDialog(button) {
 
-    const input_name = document.getElementById('name');
+    const input_last_name = document.getElementById('last_name');
+    const input_first_name = document.getElementById('first_name');
     const input_age = document.getElementById('age');
     const input_gender = document.getElementById('gender');
     const input_address = document.getElementById('address');
 
-    console.log(input_name.value + input_age.value + input_gender.value + input_address.value);
+    console.log(input_last_name.value + input_first_name.value + input_age.value + input_gender.value + input_address.value);
 
     // 誕生日を保持したDateインスタンスを生成
 	var birthday = new Date(input_age.value);
@@ -142,11 +144,13 @@ function okDialog(button) {
     var mycell2 = mytr.insertCell(1);
     var mycell3 = mytr.insertCell(2);
     var mycell4 = mytr.insertCell(3);
+    var mycell5 = mytr.insertCell(4);
  
-    mycell1.innerHTML = input_name.value;
-    mycell2.innerHTML = age;
-    mycell3.innerHTML = input_gender.value;
-    mycell4.innerHTML = input_address.value;
+    mycell1.innerHTML = input_last_name.value;
+    mycell2.innerHTML = input_first_name.value;
+    mycell3.innerHTML = age;
+    mycell4.innerHTML = input_gender.value;
+    mycell5.innerHTML = input_address.value;
 
     clearInput()
 
@@ -166,20 +170,24 @@ function cancelDialog() {
 }
 
 function clearInput(){
-    const input_name = document.getElementById('name');
+    const input_last_name = document.getElementById('last_name');
+    const input_first_name = document.getElementById('first_name');
     const input_age = document.getElementById('age');
     const input_gender = document.getElementById('gender');
     const input_address = document.getElementById('address');
-    const input_name2 = document.getElementById('name2');
+    const input_last_name2 = document.getElementById('last_name2');
+    const input_first_name2 = document.getElementById('first_name2');
     const input_age2 = document.getElementById('age2');
     const input_gender2 = document.getElementById('gender2');
     const input_address2 = document.getElementById('address2');
 
-    input_name.value = "";
+    input_last_name.value = "";
+    input_first_name.value = "";
     input_age.value = "";
     input_gender.value = "";
     input_address.value = "";
-    input_name2.value = "";
+    input_last_name2.value = "";
+    input_first_name2.value = "";
     input_age2.value = "";
     input_gender2.value = "";
     input_address2.value = "";
@@ -190,7 +198,8 @@ var user_editting;
 
 //編集ダイアログ
 function showEditDialog(event) {
-    const input_name2 = document.getElementById('name2');
+    const input_last_name2 = document.getElementById('last_name2');
+    const input_first_name2 = document.getElementById('first_name2');
     const input_age2 = document.getElementById('age2');
     const input_gender2 = document.getElementById('gender2');
     const input_address2 = document.getElementById('address2');
@@ -198,7 +207,8 @@ function showEditDialog(event) {
     const user_id = event.target.dataset.user_id;
     var user = user_data.find((v) => v.id == user_id);
     user_editting = user;
-    input_name2.value = user.last_name + user.first_name;
+    input_last_name2.value = user.last_name;
+    input_first_name2.value = user.first_name;
     input_age2.value = user.birth_date;
     input_gender2.selectedIndex = user.gender;
     input_address2.value = user.address;
@@ -213,7 +223,8 @@ function showEditDialog(event) {
 
 //編集okボタン
 function ok2Dialog(button) {
-    const input_name2 = document.getElementById('name2');
+    const input_last_name2 = document.getElementById('last_name2');
+    const input_first_name2 = document.getElementById('first_name2');
     const input_age2 = document.getElementById('age2');
     const input_gender2 = document.getElementById('gender2');
     const input_address2 = document.getElementById('address2');

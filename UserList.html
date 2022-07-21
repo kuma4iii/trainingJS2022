@@ -4,7 +4,7 @@
 <!--ユーザー一覧画面-->
 <head><script type="text/javascript" src="User.js">
     </script>
-    <link href="User.css" rel="stylesheet">
+    <link  rel="stylesheet" href="User.css">
 </head>
 <body>
 <div class="class">
@@ -15,13 +15,13 @@
 <!-- ダイアログ ここから-->
 <dialog id="dialog">
     <p>ユーザー登録</p>
-    氏名<input type="text" id="name"/><br>
+    氏名<input type="text" id="last_name"/><input type="text" id="first_name"/><br>
     性別<select id="gender"/>
             <option value=" 男">男</option>
             <option value=" 女">女</option>
             <option value=" その他">その他</option></select><br>
     生年月日<input type="date" id="age"/><br>
-    住所<input type="text" id="address"/><br>
+    住所<input type="textarea" cols="40" rows="2" id="address"></textarea><br>
     <!-- ダイアログ内のボタン -->
     <button id="btn_cancel" onclick="cancelDialog()">キャンセル</button>
     <button id="btn_ok" onclick="okDialog()">OK</button>
@@ -31,13 +31,13 @@
 <!-- ダイアログ ここから-->
 <dialog id="dialog2">
     <p>ユーザー情報編集</p> 
-    氏名<input type="text" id="name2"/><br>   
+    氏名<input type="text" id="last_name2"/><input type="text" id="first_name2"/><br>   
     性別<select id="gender2"/>
             <option value=" 男">男</option>
             <option value=" 女">女</option>
             <option value=" その他">その他</option></select><br>
     生年月日<input type="date" id="age2"/><br>
-    住所<input type="text" id="address2"/><br>
+    住所<input type="textarea" cols="40" rows="2" id="address2"/><br>
     <!-- ダイアログ内のボタン -->
     <button id="btn_cancel" onclick="cancel2Dialog()">キャンセル</button>
     <button id="btn_ok" onclick="ok2Dialog()">OK</button>

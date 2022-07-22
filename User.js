@@ -70,7 +70,7 @@ function addUser(user_json){
         gender_show = "男";
     }else if(user_json.gender == 1){
         gender_show = "女";
-    }else{
+    }else {
         gender_show = "その他";
     }
     
@@ -234,7 +234,7 @@ function ok2Dialog(button) {
  user_editting.last_name = input_last_name2.value
  user_editting.first_name = input_first_name2.value
  user_editting.birth_date = input_age2.value
- user_editting.gender = input_gender2.value
+ user_editting.gender = input_gender2.selectedIndex;
  user_editting.address = input_address2.value
 
  // 一覧の再表示

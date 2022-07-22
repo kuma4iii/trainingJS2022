@@ -10,18 +10,21 @@
 <div class="class">
 <h1>ユーザー一覧</h1>
 
-<hr>
-
 <!-- ダイアログ ここから-->
 <dialog id="dialog">
     <p>ユーザー登録</p>
-    氏名<input type="text" id="last_name"/><input type="text" id="first_name"/><br>
-    性別<select id="gender"/>
+    <div>
+    氏名：<input type="text" id="last_name"/>  <input type="text" id="first_name"/><br>
+    <br>
+    性別：<select id="gender"/>
             <option value=" 男">男</option>
             <option value=" 女">女</option>
             <option value=" その他">その他</option></select><br>
-    生年月日<input type="date" id="age"/><br>
-    住所<input type="textarea" cols="40" rows="2" id="address"></textarea><br>
+    <br>
+    生年月日：<input type="date" id="age"/><br>
+    <br>
+    住所：<input type="textarea" cols="40" rows="2" id="address"></textarea><br>
+    </div>
     <!-- ダイアログ内のボタン -->
     <button id="btn_cancel" onclick="cancelDialog()">キャンセル</button>
     <button id="btn_ok" onclick="okDialog()">OK</button>
@@ -30,14 +33,19 @@
 
 <!-- ダイアログ ここから-->
 <dialog id="dialog2">
-    <p>ユーザー情報編集</p> 
-    氏名<input type="text" id="last_name2"/><input type="text" id="first_name2"/><br>   
-    性別<select id="gender2"/>
+    <p>ユーザー情報編集</p>
+    <div>
+    氏名：<input type="text" id="last_name2"/>  <input type="text" id="first_name2"/><br>
+    <br>  
+    性別：<select id="gender2"/>
             <option value=" 男">男</option>
             <option value=" 女">女</option>
             <option value=" その他">その他</option></select><br>
-    生年月日<input type="date" id="age2"/><br>
-    住所<input type="textarea" cols="40" rows="2" id="address2"/><br>
+    <br>
+    生年月日：<input type="date" id="age2"/><br>
+    <br>
+    住所：<input type="textarea" cols="40" rows="2" id="address2"/><br>
+    </div>
     <!-- ダイアログ内のボタン -->
     <button id="btn_cancel" onclick="cancel2Dialog()">キャンセル</button>
     <button id="btn_ok" onclick="ok2Dialog()">OK</button>
@@ -45,7 +53,7 @@
 <!-- ダイアログ ここまで-->
 
 <table id="tbl">
-    <caption>登録済ユーザー</caption>
+    <h2>登録済ユーザー</h2>
     <tr>
         <th>氏</th>
         <th>名</th>

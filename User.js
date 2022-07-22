@@ -223,44 +223,33 @@ function showEditDialog(event) {
 
 //編集okボタン
 function ok2Dialog(button) {
-    const input_last_name2 = document.getElementById('last_name2');
-    const input_first_name2 = document.getElementById('first_name2');
-    const input_age2 = document.getElementById('age2');
-    const input_gender2 = document.getElementById('gender2');
-    const input_address2 = document.getElementById('address2');
+ //各入力欄の要素を取得
+ const input_last_name2 = document.getElementById('last_name2');
+ const input_first_name2 = document.getElementById('first_name2');
+ const input_age2 = document.getElementById('age2');
+ const input_gender2 = document.getElementById('gender2');
+ const input_address2 = document.getElementById('address2');
 
-    // 誕生日を保持したDateインスタンスを生成
-	var birthday = new Date(input_age2.value);
-	
-	// 今日の日付を保持したDateインスタンスを生成
-	var today = new Date();
+ //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
+ user_editting.last_name = input_last_name2.value
+ user_editting.first_name = input_first_name2.value
+ user_editting.birth_date = input_age2.value
+ user_editting.gender = input_gender2.value
+ user_editting.address = input_address2.value
 
-	// 現在の年から誕生年を減算
-	var age2 = today.getFullYear() - birthday.getFullYear();
+ // 一覧の再表示
+ for(var user of user_data){
+     //tbody要素にある最後の行（tr要素）を削除
+     var tableElem = document.getElementById('tbl');
+     tableElem.tBodies[0].deleteRow(-1);
 
-	// 現在の年で誕生日が来ていなければ減算
-	if ( today < birthday.setFullYear( today.getFullYear() ) ){
-	    age2--;
-	}
+     //追加
+     addUser(user)
+ }
 
-    // 編集ダイアログに入力した値を画面に出力したい
-    input_last_name2 = document.getElementById("output");
-    input_first_name2 = document.getElementById("output");
-    input_age2 = document.getElementById("output");
-    input_gender2 = document.getElementById("output");
-    input_address2 = document.getElementById("output");
+ clearInput()
 
-    input_last_name2.innerText = document.forms.dialog2.last_name2.value;
-    input_first_name2.innerText = document.forms.dialog2.first_name2.value;
-    input_age2.innerText = document.forms.dialog2.age2.value;
-    input_gender2.innerText = document.forms.dialog2.gender2.value;
-    input_address2.innerText = document.forms.dialog2.address2.value;
-
-    console.log(user_editting);   
-
-    clearInput()
-    
-    dialog2.close();
+ dialog2.close();
 }
 
 //編集キャンセルボタン

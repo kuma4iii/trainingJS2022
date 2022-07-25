@@ -41,9 +41,9 @@ var user_data = [
   },
 ];
 
-function birthdayCalc() {
+function birthdayCalc(birthday_text) {
   // 誕生日を保持したDateインスタンスを生成
-  var birthday = new Date(user_json.birth_date);
+  var birthday = new Date(birthday_text);
 
   // 今日の日付を保持したDateインスタンスを生成
   var today = new Date();
@@ -55,18 +55,20 @@ function birthdayCalc() {
   if (today < birthday.setFullYear(today.getFullYear())) {
     age--;
   }
+  return age;
 }
 
-function genderJudge() {
+function genderJudge(gender_num) {
   // 性別の判定
   var gender_show;
-  if (user_json.gender == 0) {
+  if (gender_num == 0) {
     gender_show = "男";
-  } else if (user_json.gender == 1) {
+  } else if (gender_num == 1) {
     gender_show = "女";
   } else {
     gender_show = "その他";
   }
+  return gender_show;
 }
 
 function addUser(user_json) {
@@ -74,10 +76,6 @@ function addUser(user_json) {
   console.log(user_json.birth_date);
   console.log(user_json.gender);
   console.log(user_json.address);
-
-  birthdayCalc();
-
-  genderJudge();
 
   var mytable = document.getElementById("tbl");
   var mytr = mytable.insertRow(1);
@@ -91,8 +89,8 @@ function addUser(user_json) {
 
   mycell1.innerHTML = user_json.last_name;
   mycell2.innerHTML = user_json.first_name;
-  mycell3.innerHTML = age;
-  mycell4.innerHTML = gender_show;
+  mycell3.innerHTML = birthdayCalc(user_json.birth_date);
+  mycell4.innerHTML = genderJudge(user_json.gender);
   mycell5.innerHTML = user_json.address;
 
   var mycell6 = document.createElement("td");
@@ -129,8 +127,6 @@ function okDialog(button) {
       input_gender_user.value +
       input_address_user.value
   );
-
-  birthdayCalc();
 
   var mytable = document.getElementById("tbl");
 

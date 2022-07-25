@@ -6,9 +6,9 @@ window.onload = function() {
     }
 }
 
-let dialog; // ダイアログ要素
-let message_dialog; // メッセージ
-let user_data = [  
+var dialog; // ダイアログ要素
+var message_dialog; // メッセージ
+var user_data = [  
     {
         "id" : 1,
         "last_name" : "田中",
@@ -104,25 +104,25 @@ function addUser(user_json){
 //ユーザー登録ダイアログ
 function showCreateDialog(button) {
     
-    dialog = document.getElementById('dialog'); // ダイアログ要素取得
+    dialog_user = document.getElementById('dialog_user'); // ダイアログ要素取得
 
     // ダイアログ表示
-    dialog.showModal();
+    dialog_user.showModal();
 }
 
 //ユーザー登録okボタン
 function okDialog(button) {
 
-    const input_last_name = document.getElementById('last_name');
-    const input_first_name = document.getElementById('first_name');
-    const input_age = document.getElementById('age');
-    const input_gender = document.getElementById('gender');
-    const input_address = document.getElementById('address');
+    const input_last_name_user = document.getElementById('last_name_user');
+    const input_first_name_user = document.getElementById('first_name_user');
+    const input_age_user = document.getElementById('age_user');
+    const input_gender_user = document.getElementById('gender_user');
+    const input_address_user = document.getElementById('address_user');
 
-    console.log(input_last_name.value + input_first_name.value + input_age.value + input_gender.value + input_address.value);
+    console.log(input_last_name_user.value + input_first_name_user.value + input_age_user.value + input_gender_user.value + input_address_user.value);
 
     // 誕生日を保持したDateインスタンスを生成
-	var birthday = new Date(input_age.value);
+	var birthday = new Date(input_age_user.value);
 	
 	// 今日の日付を保持したDateインスタンスを生成
 	var today = new Date();
@@ -146,17 +146,17 @@ function okDialog(button) {
     var mycell4 = mytr.insertCell(3);
     var mycell5 = mytr.insertCell(4);
  
-    mycell1.innerHTML = input_last_name.value;
-    mycell2.innerHTML = input_first_name.value;
+    mycell1.innerHTML = input_last_name_user.value;
+    mycell2.innerHTML = input_first_name_user.value;
     mycell3.innerHTML = age;
-    mycell4.innerHTML = input_gender.value;
-    mycell5.innerHTML = input_address.value;
+    mycell4.innerHTML = input_gender_user.value;
+    mycell5.innerHTML = input_address_user.value;
 
     clearInput()
 
     // touroku
 
-    dialog.close();
+    dialog_user.close();
 }
 
 //ユーザー登録キャンセルボタン
@@ -166,31 +166,31 @@ function cancelDialog() {
 
     console.log ("キャンセルボタンが押下されました。");
 
-    dialog.close();
+    dialog_user.close();
 }
 
 function clearInput(){
-    const input_last_name = document.getElementById('last_name');
-    const input_first_name = document.getElementById('first_name');
-    const input_age = document.getElementById('age');
-    const input_gender = document.getElementById('gender');
-    const input_address = document.getElementById('address');
-    const input_last_name2 = document.getElementById('last_name2');
-    const input_first_name2 = document.getElementById('first_name2');
-    const input_age2 = document.getElementById('age2');
-    const input_gender2 = document.getElementById('gender2');
-    const input_address2 = document.getElementById('address2');
+    const input_last_name_user = document.getElementById('last_name_user');
+    const input_first_name_user = document.getElementById('first_name_user');
+    const input_age_user = document.getElementById('age_user');
+    const input_gender_user = document.getElementById('gender_user');
+    const input_address_user = document.getElementById('address_user');
+    const input_last_name_edit = document.getElementById('last_name_edit');
+    const input_first_name_edit = document.getElementById('first_name_edit');
+    const input_age_edit = document.getElementById('age_edit');
+    const input_gender_edit = document.getElementById('gender_edit');
+    const input_address_edit = document.getElementById('address_edit');
 
-    input_last_name.value = "";
-    input_first_name.value = "";
-    input_age.value = "";
-    input_gender.value = "";
-    input_address.value = "";
-    input_last_name2.value = "";
-    input_first_name2.value = "";
-    input_age2.value = "";
-    input_gender2.value = "";
-    input_address2.value = "";
+    input_last_name_user.value = "";
+    input_first_name_user.value = "";
+    input_age_user.value = "";
+    input_gender_user.value = "";
+    input_address_user.value = "";
+    input_last_name_edit.value = "";
+    input_first_name_edit.value = "";
+    input_age_edit.value = "";
+    input_gender_edit.value = "";
+    input_address_edit.value = "";
 
 }
 
@@ -198,44 +198,44 @@ var user_editting;
 
 //編集ダイアログ
 function showEditDialog(event) {
-    const input_last_name2 = document.getElementById('last_name2');
-    const input_first_name2 = document.getElementById('first_name2');
-    const input_age2 = document.getElementById('age2');
-    const input_gender2 = document.getElementById('gender2');
-    const input_address2 = document.getElementById('address2');
+    const input_last_name_edit = document.getElementById('last_name_edit');
+    const input_first_name_edit = document.getElementById('first_name_edit');
+    const input_age_edit = document.getElementById('age_edit');
+    const input_gender_edit = document.getElementById('gender_edit');
+    const input_address_edit = document.getElementById('address_edit');
 
     const user_id = event.target.dataset.user_id;
     var user = user_data.find((v) => v.id == user_id);
     user_editting = user;
-    input_last_name2.value = user.last_name;
-    input_first_name2.value = user.first_name;
-    input_age2.value = user.birth_date;
-    input_gender2.selectedIndex = user.gender;
-    input_address2.value = user.address;
+    input_last_name_edit.value = user.last_name_edit;
+    input_first_name_edit.value = user.first_name_edit;
+    input_age_edit.value = user.birth_date;
+    input_gender_edit.selectedIndex = user.gender_edit;
+    input_address_edit.value = user.address_edit;
 
 
-    dialog2 = document.getElementById('dialog2'); // ダイアログ要素取得
+    dialog_edit = document.getElementById('dialog_edit'); // ダイアログ要素取得
 
     // ダイアログ表示
-    dialog2.showModal();
+    dialog_edit.showModal();
 
 }
 
 //編集okボタン
 function ok2Dialog(button) {
  //各入力欄の要素を取得
- const input_last_name2 = document.getElementById('last_name2');
- const input_first_name2 = document.getElementById('first_name2');
- const input_age2 = document.getElementById('age2');
- const input_gender2 = document.getElementById('gender2');
- const input_address2 = document.getElementById('address2');
+ const input_last_name_edit = document.getElementById('last_name_edit');
+ const input_first_name_edit = document.getElementById('first_name_edit');
+ const input_age_edit = document.getElementById('age_edit');
+ const input_gender_edit = document.getElementById('gender_edit');
+ const input_address_edit = document.getElementById('address_edit');
 
  //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
- user_editting.last_name = input_last_name2.value
- user_editting.first_name = input_first_name2.value
- user_editting.birth_date = input_age2.value
- user_editting.gender = input_gender2.selectedIndex;
- user_editting.address = input_address2.value
+ user_editting.last_name = input_last_name_edit.value
+ user_editting.first_name = input_first_name_edit.value
+ user_editting.birth_date = input_age_edit.value
+ user_editting.gender = input_gender_edit.selectedIndex;
+ user_editting.address = input_address_edit.value
 
  // 一覧の再表示
  for(var user of user_data){
@@ -249,7 +249,7 @@ function ok2Dialog(button) {
 
  clearInput()
 
- dialog2.close();
+ dialog_edit.close();
 }
 
 //編集キャンセルボタン
@@ -259,5 +259,5 @@ function cancel2Dialog() {
 
     clearInput();
 
-    dialog2.close();
+    dialog_edit.close();
 }

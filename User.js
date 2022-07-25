@@ -207,11 +207,11 @@ function showEditDialog(event) {
     const user_id = event.target.dataset.user_id;
     var user = user_data.find((v) => v.id == user_id);
     user_editting = user;
-    input_last_name_edit.value = user.last_name_edit;
-    input_first_name_edit.value = user.first_name_edit;
+    input_last_name_edit.value = user.last_name;
+    input_first_name_edit.value = user.first_name;
     input_age_edit.value = user.birth_date;
-    input_gender_edit.selectedIndex = user.gender_edit;
-    input_address_edit.value = user.address_edit;
+    input_gender_edit.selectedIndex = user.gender;
+    input_address_edit.value = user.address;
 
 
     dialog_edit = document.getElementById('dialog_edit'); // ダイアログ要素取得

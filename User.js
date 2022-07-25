@@ -2,22 +2,6 @@ window.onload = function () {
   for (var user_json of user_data) {
     addUser(user_json);
   }
-
-  function birthdayCalc() {
-    // 誕生日を保持したDateインスタンスを生成
-    var birthday = new Date(user_json.birth_date);
-
-    // 今日の日付を保持したDateインスタンスを生成
-    var today = new Date();
-
-    // 現在の年から誕生年を減算
-    var age = today.getFullYear() - birthday.getFullYear();
-
-    // 現在の年で誕生日が来ていなければ減算
-    if (today < birthday.setFullYear(today.getFullYear())) {
-      age--;
-    }
-  }
 };
 
 var dialog; // ダイアログ要素

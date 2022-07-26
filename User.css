@@ -1,159 +1,158 @@
 /*画面背景*/
-body{
-    background :linear-gradient(#aed598,#a3cee7a3,#ffd8d871);
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-    }
+body {
+  background: linear-gradient(#aed598, #a3cee7a3, #ffd8d871);
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
 
 /*ユーザー一覧*/
 h1 {
-    position: relative;
-    display: inline-block;
-    height: 32px;
-    margin-left: 30px;
-    padding: 1rem 2rem 1rem 3rem;
-    color: #fff;
-    background: #3f6d4da4;
-    }
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  margin-left: 30px;
+  padding: 1rem 2rem 1rem 3rem;
+  color: #fff;
+  background: #3f6d4da4;
+}
 h1:before {
-    position: absolute;
-    top: 0;
-    left: -30px;
-    content: '';
-    border-width: 32px 30px 32px 0;
-    border-style: solid;
-    border-color: transparent #3f6d4da4 transparent transparent;
-    }
+  position: absolute;
+  top: 0;
+  left: -30px;
+  content: "";
+  border-width: 32px 30px 32px 0;
+  border-style: solid;
+  border-color: transparent #3f6d4da4 transparent transparent;
+}
 h1:after {
-    position: absolute;
-    top: calc(50% - 7px);
-    left: -10px;
-    width: 14px;
-    height: 14px;
-    content: '';
-    border-radius: 50%;
-    background: #fff;
-    }
+  position: absolute;
+  top: calc(50% - 7px);
+  left: -10px;
+  width: 14px;
+  height: 14px;
+  content: "";
+  border-radius: 50%;
+  background: #fff;
+}
 
 /*登録済みユーザー*/
 h2 {
-    position: relative;
-    padding: 1em 2em;
-    text-align: center;
-    }
+  position: relative;
+  padding: 1em 2em;
+  text-align: center;
+}
 h2:before,
 h2:after {
-    position: absolute;
-    content: '';
-    }
+  position: absolute;
+  content: "";
+}
 h2:after {
-    top: 0;
-    left: 500px;
-    width: 50px;
-    height: 50px;
-    border-top: 2px solid #000;
-    border-left: 2px solid #000;
-    }
+  top: 0;
+  left: 500px;
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+}
 h2:before {
-    right: 500px;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-    border-right: 2px solid #000;
-    border-bottom: 2px solid #000;
-    }
+  right: 500px;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
 
 /*テーブルのレイアウト*/
-table{
-    width: auto;
-    border-collapse:separate;
-    border-spacing: 0;
-    margin: auto;
-    }
+table {
+  width: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: auto;
+}
 table th:nth-child(1) {
-	width: 15%;
-    table-layout: fixed
-    }
+  width: 15%;
+  table-layout: fixed;
+}
 table th:nth-child(2) {
-	width: 15%;
-    table-layout: fixed
-    }
+  width: 15%;
+  table-layout: fixed;
+}
 table th:nth-child(3) {
-	width: 5%;
-    table-layout: fixed
-    }
+  width: 5%;
+  table-layout: fixed;
+}
 table th:nth-child(4) {
-	width: 10%;
-    table-layout: fixed
-    }
+  width: 10%;
+  table-layout: fixed;
+}
 table th:nth-child(5) {
-	width: 30%;
-    table-layout: fixed
-    }
+  width: 30%;
+  table-layout: fixed;
+}
 table th:nth-child(6) {
-	width: 20%;
-    table-layout: fixed
-    } 
-table th:first-child{
-    border-radius: 5px 0 0 0;
-    } 
-table th:last-child{
-    border-radius: 0 5px 0 0;
-    border-right: 1px solid #d01138;
-    }
-table th{
-    text-align: center;
-    color:white;
-    background: linear-gradient(#f056b3a4,#af8ec0ba);
-    border-left: 1px solid #3c6690;
-    border-top: 1px solid #3c6690;
-    border-bottom: 1px solid #3c6690;
-    box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-    padding: 10px 0;
-    }
-table td{
-    text-align: center;
-    border-left: 1px solid #a8b7c5;
-    border-bottom: 1px solid #a8b7c5;
-    border-top:none;
-    box-shadow: 0px -3px 5px 1px #eee inset;
-    padding: 10px 0;
-    }  
-table td:last-child{
-    border-right: 1px solid #a8b7c5;
-    }  
+  width: 20%;
+  table-layout: fixed;
+}
+table th:first-child {
+  border-radius: 5px 0 0 0;
+}
+table th:last-child {
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #d01138;
+}
+table th {
+  text-align: center;
+  color: white;
+  background: linear-gradient(#f056b3a4, #af8ec0ba);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+  padding: 10px 0;
+}
+table td {
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top: none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  padding: 10px 0;
+}
+table td:last-child {
+  border-right: 1px solid #a8b7c5;
+}
 table tr:last-child td:first-child {
-    border-radius: 0 0 0 5px;
-    } 
+  border-radius: 0 0 0 5px;
+}
 table tr:last-child td:last-child {
-    border-radius: 0 0 5px 0;
-    }
+  border-radius: 0 0 5px 0;
+}
 
 /*追加登録ダイアログ*/
-dialog{
-    background: #fbd9e6;
-    border: 8px solid #647c7762;
-    border-radius: 8px;
+dialog {
+  background: #fbd9e6;
+  border: 8px solid #647c7762;
+  border-radius: 8px;
 }
 dialog div {
-	border: 1px solid #647c7762;
-	padding: 10px;
-	border-radius: 4px;
-    text-align: left;
+  border: 1px solid #647c7762;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: left;
 }
 
 /*編集ダイアログ*/
-dialog2{
-    background: #fbd9e6;
-    border: 8px solid #647c7762;
-    border-radius: 8px;
+dialog2 {
+  background: #fbd9e6;
+  border: 8px solid #647c7762;
+  border-radius: 8px;
 }
 dialog2 div {
-	border: 1px solid #647c7762;
-	padding: 10px;
-	border-radius: 4px;
-    text-align: left;
+  border: 1px solid #647c7762;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: left;
 }
-

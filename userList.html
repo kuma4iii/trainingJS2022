@@ -1,70 +1,76 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+  <!--ユーザー一覧画面-->
+  <head>
+    <script type="text/javascript" src="user.js"></script>
+    <link rel="stylesheet" href="user.css" />
+  </head>
+  <body>
+    <div class="class">
+      <h1>ユーザー一覧</h1>
 
-<!--ユーザー一覧画面-->
-<head><script type="text/javascript" src="user.js">
-    </script>
-    <link  rel="stylesheet" href="user.css">
-</head>
-<body>
-<div class="class">
-<h1>ユーザー一覧</h1>
-
-<!-- ダイアログ ここから-->
-<dialog id="dialog_user">
-    <p>ユーザー登録</p>
-    <div>
-    氏名：<input type="text" id="last_name_user"/>  <input type="text" id="first_name_user"/><br>
-    <br>
-    性別：<select id="gender_user">
+      <!-- ダイアログ ここから-->
+      <dialog id="dialog_user">
+        <p>ユーザー登録</p>
+        <div>
+          氏名：<input type="text" id="last_name_user" />
+          <input type="text" id="first_name_user" /><br />
+          <br />
+          性別：<select id="gender_user">
             <option value=" 男">男</option>
             <option value=" 女">女</option>
-            <option value=" その他">その他</option></select><br>
-    <br>
-    生年月日：<input type="date" id="age_user"/><br>
-    <br>
-    住所：<textarea cols="40" rows="2" id="address_user"></textarea><br>
-    </div>
-    <!-- ダイアログ内のボタン -->
-    <button id="btn_cancel" onclick="cancelDialog()">キャンセル</button>
-    <button id="btn_ok" onclick="okDialog()">OK</button>
-</dialog>
-<!-- ダイアログ ここまで-->
+            <option value=" その他">その他</option></select
+          ><br />
+          <br />
+          生年月日：<input type="date" id="age_user" /><br />
+          <br />
+          住所：<textarea cols="40" rows="2" id="address_user"></textarea><br />
+        </div>
+        <!-- ダイアログ内のボタン -->
+        <button id="btn_cancel" onclick="cancelDialog()">キャンセル</button>
+        <button id="btn_ok" onclick="okDialog()">OK</button>
+      </dialog>
+      <!-- ダイアログ ここまで-->
 
-<!-- ダイアログ ここから-->
-<dialog id="dialog_edit">
-    <p>ユーザー情報編集</p>
-    <div>
-    氏名：<input type="text" id="last_name_edit"/>  <input type="text" id="first_name_edit"/><br>
-    <br>  
-    性別：<select id="gender_edit">
+      <!-- ダイアログ ここから-->
+      <dialog id="dialog_edit">
+        <p>ユーザー情報編集</p>
+        <div>
+          氏名：<input type="text" id="last_name_edit" />
+          <input type="text" id="first_name_edit" /><br />
+          <br />
+          性別：<select id="gender_edit">
             <option value=" 男">男</option>
             <option value=" 女">女</option>
-            <option value=" その他">その他</option></select><br>
-    <br>
-    生年月日：<input type="date" id="age_edit"/><br>
-    <br>
-    住所：<textarea cols="40" rows="2" id="address_edit"/></textarea><br>
+            <option value=" その他">その他</option></select
+          ><br />
+          <br />
+          生年月日：<input type="date" id="age_edit" /><br />
+          <br />
+          住所：<textarea cols="40" rows="2" id="address_edit"></textarea><br />
+        </div>
+        <!-- ダイアログ内のボタン -->
+        <button id="btn_cancel" onclick="cancel2Dialog()">キャンセル</button>
+        <button id="btn_ok" onclick="ok2Dialog()">OK</button>
+      </dialog>
+      <!-- ダイアログ ここまで-->
+
+      <table id="tbl">
+        <h2>登録済ユーザー</h2>
+        <tr>
+          <th>氏</th>
+          <th>名</th>
+          <th>年齢</th>
+          <th>性別</th>
+          <th>住所</th>
+          <th>
+            <button id="btn_touroku" onclick="showCreateDialog()">
+              追加登録
+            </button>
+          </th>
+        </tr>
+        <!-- 空のテーブル -->
+      </table>
     </div>
-    <!-- ダイアログ内のボタン -->
-    <button id="btn_cancel" onclick="cancel2Dialog()">キャンセル</button>
-    <button id="btn_ok" onclick="ok2Dialog()">OK</button>
-</dialog>
-<!-- ダイアログ ここまで-->
-
-<table id="tbl">
-    <h2>登録済ユーザー</h2>
-    <tr>
-        <th>氏</th>
-        <th>名</th>
-        <th>年齢</th>
-        <th>性別</th>
-        <th>住所</th>
-        <th><button id="btn_touroku" onclick="showCreateDialog()">追加登録</button></th>
-    </tr>
-    <!-- 空のテーブル -->
-</table>
-</div>
-</body>
-
+  </body>
 </html>

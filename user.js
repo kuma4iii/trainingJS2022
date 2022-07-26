@@ -4,6 +4,15 @@ window.onload = function () {
   }
 };
 
+function escapeHTML(string) {
+  return string
+    .replace(/&/g, "&lt;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+}
+
 var dialog; // ダイアログ要素
 var message_dialog; // メッセージ
 var user_data = [
@@ -139,15 +148,13 @@ function okDialog(button) {
   var mycell4 = mytr.insertCell(3);
   var mycell5 = mytr.insertCell(4);
 
-  mycell1.innerHTML = input_last_name_user.value;
-  mycell2.innerHTML = input_first_name_user.value;
+  mycell1.innerHTML = escapeHTML(input_last_name_user.value);
+  mycell2.innerHTML = escapeHTML(input_first_name_user.value);
   mycell3.innerHTML = age;
   mycell4.innerHTML = input_gender_user.value;
-  mycell5.innerHTML = input_address_user.value;
+  mycell5.innerHTML = escapeHTML(input_address_user.value);
 
   clearInput();
-
-  // touroku
 
   dialog_user.close();
 }
@@ -220,11 +227,11 @@ function ok2Dialog(button) {
   const input_address_edit = document.getElementById("address_edit");
 
   //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
-  user_editting.last_name = input_last_name_edit.value;
-  user_editting.first_name = input_first_name_edit.value;
+  user_editting.last_name = escapeHTML(input_last_name_edit.value);
+  user_editting.first_name = escapeHTML(input_first_name_edit.value);
   user_editting.birth_date = input_age_edit.value;
   user_editting.gender = input_gender_edit.selectedIndex;
-  user_editting.address = input_address_edit.value;
+  user_editting.address = escapeHTML(input_address_edit.value);
 
   // 一覧の再表示
   for (var user of user_data) {

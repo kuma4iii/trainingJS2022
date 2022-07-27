@@ -146,7 +146,7 @@ function okDialog(button) {
       input_address_user.value
   );
 
-  var new_user = {
+  var obj = {
     id: 5,
     last_name: input_last_name_user.value,
     first_name: input_first_name_user.value,
@@ -155,7 +155,7 @@ function okDialog(button) {
     address: input_address_user.value,
   };
 
-  var user_data = JSON.stringify(new_user);
+  var user_json = JSON.stringify(obj);
   user_data.push(user_json);
   addUser(user_json);
 

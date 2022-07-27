@@ -5,13 +5,17 @@ window.onload = function () {
 
     }
 
+    // 固有のユーザIDを取得してコンソールに出力
     console.log("yu-za id : " + getUnigueId())
 }
 
 function getUnigueId() {
-    for (let i = 1; i < 9; i++) {
+    // ユーザJSON配列の列数＋１回for文を回す
+    for (let i = 1; i < user_data.length + 2; i++) {
+        // for文のindex番号をIDのキーとしてユーザを検索
         user = user_data.find((v) => v.id == i)
         if (user === undefined) {
+            // IDでユーザ検索がヒットしなかった＝ユーザIDが使用されていない　なのでindex番号をユーザIDとして返す
             return i
         }
     }

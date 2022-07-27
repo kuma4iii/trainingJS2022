@@ -4,6 +4,17 @@ window.onload = function () {
         addUser(user_json)
 
     }
+
+    console.log("yu-za id : " + getUnigueId())
+}
+
+function getUnigueId() {
+    for (let i = 1; i < 9; i++) {
+        user = user_data.find((v) => v.id == i)
+        if (user === undefined) {
+            return i
+        }
+    }
 }
 
 let dialog; // ダイアログ要素
@@ -238,7 +249,7 @@ function ok2Dialog(button) {
     user_editting.address = input_address2.value
 
     // 一覧の再表示
-    for(var user of user_data){
+    for (var user of user_data) {
         //tbody要素にある最後の行（tr要素）を削除
         var tableElem = document.getElementById('tbl');
         tableElem.tBodies[0].deleteRow(-1);

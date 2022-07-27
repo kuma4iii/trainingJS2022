@@ -148,6 +148,8 @@ function okDialog(button) {
   var mycell4 = mytr.insertCell(3);
   var mycell5 = mytr.insertCell(4);
 
+  var age = null;
+
   mycell1.innerHTML = escapeHTML(input_last_name_user.value);
   mycell2.innerHTML = escapeHTML(input_first_name_user.value);
   mycell3.innerHTML = age;

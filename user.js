@@ -50,6 +50,15 @@ var user_data = [
   },
 ];
 
+function getUniqueId() {
+  for (let i = 1; i < 9; i++) {
+    user = user_data.find((v) => v.id == i);
+    if (user === undefined) {
+      return i;
+    }
+  }
+}
+
 function birthdayCalc(birthday_text) {
   // 誕生日を保持したDateインスタンスを生成
   var birthday = new Date(birthday_text);
@@ -137,24 +146,18 @@ function okDialog(button) {
       input_address_user.value
   );
 
-  var mytable = document.getElementById("tbl");
+  var new_user = {
+    id: 5,
+    last_name: input_last_name_user.value,
+    first_name: input_first_name_user.value,
+    gender: input_gender_user.selectedIndex,
+    birth_date: input_age_user.value,
+    address: input_address_user.value,
+  };
 
-  var mytr = mytable.insertRow(1);
-
-  //セルの追加
-  var mycell1 = mytr.insertCell(0);
-  var mycell2 = mytr.insertCell(1);
-  var mycell3 = mytr.insertCell(2);
-  var mycell4 = mytr.insertCell(3);
-  var mycell5 = mytr.insertCell(4);
-
-  var age = null;
-
-  mycell1.innerHTML = escapeHTML(input_last_name_user.value);
-  mycell2.innerHTML = escapeHTML(input_first_name_user.value);
-  mycell3.innerHTML = age;
-  mycell4.innerHTML = input_gender_user.value;
-  mycell5.innerHTML = escapeHTML(input_address_user.value);
+  var user_data = JSON.stringify(new_user);
+  user_data.push(user_json);
+  addUser(user_json);
 
   clearInput();
 

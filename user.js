@@ -155,9 +155,8 @@ function okDialog(button) {
     address: input_address_user.value,
   };
 
-  var user_json = JSON.stringify(obj);
-  user_data.push(user_json);
-  addUser(user_json);
+  user_data.push(obj);
+  addUser(obj);
 
   clearInput();
 

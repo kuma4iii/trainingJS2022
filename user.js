@@ -146,8 +146,10 @@ function okDialog(button) {
       input_address_user.value
   );
 
+  var id_num;
+
   var obj = {
-    id: 5,
+    id: getUniqueId(id_num),
     last_name: input_last_name_user.value,
     first_name: input_first_name_user.value,
     gender: input_gender_user.selectedIndex,

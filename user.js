@@ -105,11 +105,11 @@ function addUser(user_json) {
   var mycell4 = mytr.insertCell(3);
   var mycell5 = mytr.insertCell(4);
 
-  mycell1.innerHTML = user_json.last_name;
-  mycell2.innerHTML = user_json.first_name;
+  mycell1.innerHTML = escapeHTML(user_json.last_name);
+  mycell2.innerHTML = escapeHTML(user_json.first_name);
   mycell3.innerHTML = birthdayCalc(user_json.birth_date);
   mycell4.innerHTML = genderJudge(user_json.gender);
-  mycell5.innerHTML = user_json.address;
+  mycell5.innerHTML = escapeHTML(user_json.address);
 
   var mycell6 = document.createElement("td");
   var input_text = document.createElement("input");
@@ -231,11 +231,11 @@ function ok2Dialog(button) {
   const input_address_edit = document.getElementById("address_edit");
 
   //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
-  user_editting.last_name = escapeHTML(input_last_name_edit.value);
-  user_editting.first_name = escapeHTML(input_first_name_edit.value);
+  user_editting.last_name = input_last_name_edit.value;
+  user_editting.first_name = input_first_name_edit.value;
   user_editting.birth_date = input_age_edit.value;
   user_editting.gender = input_gender_edit.selectedIndex;
-  user_editting.address = escapeHTML(input_address_edit.value);
+  user_editting.address = input_address_edit.value;
 
   // 一覧の再表示
   for (var user of user_data) {

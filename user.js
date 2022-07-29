@@ -163,21 +163,36 @@ function okDialog(button) {
     address: input_address_user.value,
   };
 
-  user_data.push(obj);
-  addUser(obj);
+  var flag = validationCheck(obj);
+  if (flag) {
+    user_data.push(obj);
+    addUser(obj);
 
-  clearInput();
+    clearInput();
 
-  dialog_user.close();
+    dialog_user.close();
+  }
 }
 
 //ユーザー登録キャンセルボタン
 function cancelDialog() {
   clearInput();
-
+  document.getElementById("age_alert").style.visibility = "hidden";
   console.log("キャンセルボタンが押下されました。");
 
   dialog_user.close();
+}
+
+function validationCheck(user_json) {
+  var totalCheck = true;
+  var age = birthdayCalc(user_json.birth_date);
+  if (age < 20) {
+    //ここでエラーメッセージ
+    document.getElementById("age_alert").style.visibility = "visible";
+    totalCheck = false;
+  }
+
+  return totalCheck;
 }
 
 function clearInput() {

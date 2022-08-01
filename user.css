@@ -157,7 +157,8 @@ dialog2 div {
   text-align: left;
 }
 
-/*20歳未満登録エラー*/
-#age_alert {
+/*登録エラー*/
+.alert {
   visibility: hidden;
+  color: #d01138;
 }

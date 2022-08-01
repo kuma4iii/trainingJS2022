@@ -13,9 +13,14 @@
       <dialog id="dialog_user">
         <p>ユーザー登録</p>
         <div>
-          氏名：<input type="text" id="last_name_user" />
-          <input type="text" id="first_name_user" /><br />
-          <br />
+          氏名：<input type="text" id="last_name_user" maxlength="10" />
+          <input type="text" id="first_name_user" maxlength="10" /><br />
+          <p class="last_name_alert alert">
+            氏は10文字以内で入力してください。
+          </p>
+          <p class="first_name_alert alert">
+            名は10文字以内で入力してください。
+          </p>
           性別：<select id="gender_user">
             <option value=" 男">男</option>
             <option value=" 女">女</option>
@@ -23,8 +28,14 @@
           ><br />
           <br />
           生年月日：<input type="date" id="age_user" /><br />
-          <p id="age_alert">20歳未満の方は登録できません。</p>
-          住所：<textarea cols="40" rows="2" id="address_user"></textarea><br />
+          <p class="age_alert alert">20歳未満の方は登録できません。</p>
+          住所：<textarea
+            cols="40"
+            rows="2"
+            id="address_user"
+            maxlength="100"
+          ></textarea
+          ><br />
         </div>
         <!-- ダイアログ内のボタン -->
         <button id="btn_cancel" onclick="cancelDialog()">キャンセル</button>
@@ -36,9 +47,14 @@
       <dialog id="dialog_edit">
         <p>ユーザー情報編集</p>
         <div>
-          氏名：<input type="text" id="last_name_edit" />
-          <input type="text" id="first_name_edit" /><br />
-          <br />
+          氏名：<input type="text" id="last_name_edit" maxlength="10" />
+          <input type="text" id="first_name_edit" maxlength="10" /><br />
+          <p class="last_name_alert alert">
+            氏は10文字以内で入力してください。
+          </p>
+          <p class="first_name_alert alert">
+            名は10文字以内で入力してください。
+          </p>
           性別：<select id="gender_edit">
             <option value=" 男">男</option>
             <option value=" 女">女</option>
@@ -46,7 +62,7 @@
           ><br />
           <br />
           生年月日：<input type="date" id="age_edit" /><br />
-          <br />
+          <p class="age_alert alert">20歳未満の方は登録できません。</p>
           住所：<textarea cols="40" rows="2" id="address_edit"></textarea><br />
         </div>
         <!-- ダイアログ内のボタン -->

@@ -185,10 +185,29 @@ function cancelDialog() {
 
 function validationCheck(user_json) {
   var totalCheck = true;
+  var last_name = user_json.last_name;
+  var first_name = user_json.first_name;
   var age = birthdayCalc(user_json.birth_date);
-  if (age < 20) {
+
+  if (last_name.length > 10) {
     //ここでエラーメッセージ
-    document.getElementById("age_alert").style.visibility = "visible";
+    for (var element of document.getElementsByClassName("last_name_alert")) {
+      element.style.visibility = "visible";
+    }
+    totalCheck = false;
+  }
+
+  if (first_name.length > 10) {
+    for (var element of document.getElementsByClassName("first_name_alert")) {
+      element.style.visibility = "visible";
+    }
+    totalCheck = false;
+  }
+
+  if (age < 20) {
+    for (var element of document.getElementsByClassName("age_alert")) {
+      element.style.visibility = "visible";
+    }
     totalCheck = false;
   }
 
@@ -217,6 +236,10 @@ function clearInput() {
   input_age_edit.value = "";
   input_gender_edit.value = "";
   input_address_edit.value = "";
+
+  for (var element of document.getElementsByClassName("alert")) {
+    element.style.visibility = "hidden";
+  }
 }
 
 var user_editting;
@@ -253,26 +276,36 @@ function ok2Dialog(button) {
   const input_gender_edit = document.getElementById("gender_edit");
   const input_address_edit = document.getElementById("address_edit");
 
-  //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
-  user_editting.last_name = input_last_name_edit.value;
-  user_editting.first_name = input_first_name_edit.value;
-  user_editting.birth_date = input_age_edit.value;
-  user_editting.gender = input_gender_edit.selectedIndex;
-  user_editting.address = input_address_edit.value;
+  var obj = {
+    id: getUniqueId(),
+    last_name: input_last_name_edit.value,
+    first_name: input_first_name_edit.value,
+    gender: input_gender_edit.selectedIndex,
+    birth_date: input_age_edit.value,
+    address: input_address_edit.value,
+  };
 
-  // 一覧の再表示
-  for (var user of user_data) {
-    //tbody要素にある最後の行（tr要素）を削除
-    var tableElem = document.getElementById("tbl");
-    tableElem.tBodies[0].deleteRow(-1);
+  var flag = validationCheck(obj);
+  if (flag) {
+    //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
+    user_editting.last_name = input_last_name_edit.value;
+    user_editting.first_name = input_first_name_edit.value;
+    user_editting.birth_date = input_age_edit.value;
+    user_editting.gender = input_gender_edit.selectedIndex;
+    user_editting.address = input_address_edit.value;
 
-    //追加
-    addUser(user);
+    // 一覧の再表示
+    for (var user of user_data) {
+      //tbody要素にある最後の行（tr要素）を削除
+      var tableElem = document.getElementById("tbl");
+      tableElem.tBodies[0].deleteRow(-1);
+
+      //追加
+      addUser(user);
+    }
+    clearInput();
+    dialog_edit.close();
   }
-
-  clearInput();
-
-  dialog_edit.close();
 }
 
 //編集キャンセルボタン

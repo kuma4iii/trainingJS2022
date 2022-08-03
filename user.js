@@ -193,6 +193,10 @@ function validationCheck(user_json) {
   var age = birthdayCalc(user_json.birth_date);
   var address = user_json.address;
 
+  for (var element of document.getElementsByClassName("alert")) {
+    element.style.display = "none";
+  }
+
   //氏の長さエラー
   if (last_name.length > 10) {
     for (var element of document.getElementsByClassName("last_name_alert")) {

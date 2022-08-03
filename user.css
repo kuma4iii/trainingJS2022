@@ -159,6 +159,7 @@ dialog2 div {
 
 /*登録エラー*/
 .alert {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
   color: #d01138;
 }

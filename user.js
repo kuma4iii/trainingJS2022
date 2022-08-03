@@ -20,7 +20,7 @@ var user_data = [
     id: 1,
     last_name: "田中",
     first_name: "太郎",
-    gender: 0,
+    gender: 1,
     birth_date: "1999-01-01",
     address: "東京都",
   },
@@ -28,7 +28,7 @@ var user_data = [
     id: 2,
     last_name: "佐藤",
     first_name: "花子",
-    gender: 1,
+    gender: 2,
     birth_date: "1995-01-01",
     address: "埼玉県",
   },
@@ -36,7 +36,7 @@ var user_data = [
     id: 3,
     last_name: "伊藤",
     first_name: "二郎",
-    gender: 0,
+    gender: 1,
     birth_date: "1997-01-01",
     address: "北海道",
   },
@@ -44,7 +44,7 @@ var user_data = [
     id: 4,
     last_name: "小林",
     first_name: "優子",
-    gender: 2,
+    gender: 3,
     birth_date: "1989-01-01",
     address: "千葉県",
   },
@@ -52,7 +52,7 @@ var user_data = [
     id: 5,
     last_name: "山田",
     first_name: "一郎",
-    gender: 0,
+    gender: 1,
     birth_date: "1999-01-01",
     address: "東京都",
   },
@@ -88,8 +88,10 @@ function genderJudge(gender_num) {
   // 性別の判定
   var gender_show;
   if (gender_num == 0) {
-    gender_show = "男";
+    gender_show = "未選択";
   } else if (gender_num == 1) {
+    gender_show = "男";
+  } else if (gender_num == 2) {
     gender_show = "女";
   } else {
     gender_show = "その他";
@@ -177,7 +179,7 @@ function okDialog(button) {
 //ユーザー登録キャンセルボタン
 function cancelDialog() {
   clearInput();
-  document.getElementById("age_alert").style.visibility = "hidden";
+
   console.log("キャンセルボタンが押下されました。");
 
   dialog_user.close();
@@ -187,26 +189,82 @@ function validationCheck(user_json) {
   var totalCheck = true;
   var last_name = user_json.last_name;
   var first_name = user_json.first_name;
+  var gender = user_json.gender;
   var age = birthdayCalc(user_json.birth_date);
+  var address = user_json.address;
 
+  //氏の長さエラー
   if (last_name.length > 10) {
-    //ここでエラーメッセージ
     for (var element of document.getElementsByClassName("last_name_alert")) {
-      element.style.visibility = "visible";
+      element.style.display = "block";
     }
     totalCheck = false;
   }
 
+  //氏未入力エラー
+  if (last_name.length == 0) {
+    for (var element of document.getElementsByClassName(
+      "last_name_none_alert"
+    )) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //名の長さエラー
   if (first_name.length > 10) {
     for (var element of document.getElementsByClassName("first_name_alert")) {
-      element.style.visibility = "visible";
+      element.style.display = "block";
     }
     totalCheck = false;
   }
 
+  //名未入力エラー
+  if (first_name.length == 0) {
+    for (var element of document.getElementsByClassName(
+      "first_name_none_alert"
+    )) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //性別未入力エラー
+  if (gender == 0) {
+    for (var element of document.getElementsByClassName("gender_none_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //20歳未満登録エラー
   if (age < 20) {
     for (var element of document.getElementsByClassName("age_alert")) {
-      element.style.visibility = "visible";
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //年齢未入力エラー
+  if (user_json.birth_date == "") {
+    for (var element of document.getElementsByClassName("age_none_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //住所の長さエラー
+  if (address.length > 100) {
+    for (var element of document.getElementsByClassName("address_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //住所未入力エラー
+  if (address.length == 0) {
+    for (var element of document.getElementsByClassName("address_none_alert")) {
+      element.style.display = "block";
     }
     totalCheck = false;
   }
@@ -238,7 +296,7 @@ function clearInput() {
   input_address_edit.value = "";
 
   for (var element of document.getElementsByClassName("alert")) {
-    element.style.visibility = "hidden";
+    element.style.display = "none";
   }
 }
 

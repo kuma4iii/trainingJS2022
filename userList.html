@@ -18,24 +18,32 @@
           <p class="last_name_alert alert">
             氏は10文字以内で入力してください。
           </p>
+          <p class="last_name_none_alert alert">氏は必須項目です。</p>
           <p class="first_name_alert alert">
             名は10文字以内で入力してください。
           </p>
+          <p class="first_name_none_alert alert">名は必須項目です。</p>
           性別：<select id="gender_user">
+            <option value="未選択" selected>未選択</option>
             <option value=" 男">男</option>
             <option value=" 女">女</option>
-            <option value=" その他">その他</option></select
-          ><br />
+            <option value=" その他">その他</option>
+          </select>
+          <p class="gender_none_alert alert">性別は必須項目です。</p>
           <br />
           生年月日：<input type="date" id="age_user" /><br />
+          <p class="age_none_alert alert">年齢は必須項目です。</p>
           <p class="age_alert alert">20歳未満の方は登録できません。</p>
           住所：<textarea
-            cols="40"
+            cols="50"
             rows="2"
             id="address_user"
             maxlength="100"
-          ></textarea
-          ><br />
+          ></textarea>
+          <p class="address_alert alert">
+            住所は100文字以内で入力してください。
+          </p>
+          <p class="address_none_alert alert">住所は必須項目です。</p>
         </div>
         <!-- ダイアログ内のボタン -->
         <button id="btn_cancel" onclick="cancelDialog()">キャンセル</button>
@@ -52,18 +60,27 @@
           <p class="last_name_alert alert">
             氏は10文字以内で入力してください。
           </p>
+          <p class="last_name_none_alert alert">氏は必須項目です。</p>
           <p class="first_name_alert alert">
             名は10文字以内で入力してください。
           </p>
+          <p class="first_name_none_alert alert">名は必須項目です。</p>
           性別：<select id="gender_edit">
-            <option value=" 男">男</option>
-            <option value=" 女">女</option>
-            <option value=" その他">その他</option></select
-          ><br />
+            <option value="未選択">未選択</option>
+            <option value="男">男</option>
+            <option value="女">女</option>
+            <option value="その他">その他</option>
+          </select>
           <br />
+          <p class="gender_none_alert alert">性別は必須項目です。</p>
           生年月日：<input type="date" id="age_edit" /><br />
           <p class="age_alert alert">20歳未満の方は登録できません。</p>
-          住所：<textarea cols="40" rows="2" id="address_edit"></textarea><br />
+          <p class="age_none_alert alert">年齢は必須項目です。</p>
+          住所：<textarea cols="50" rows="2" id="address_edit"></textarea>
+          <p class="address_alert alert">
+            住所は100文字以内で入力してください。
+          </p>
+          <p class="address_none_alert alert">住所は必須項目です。</p>
         </div>
         <!-- ダイアログ内のボタン -->
         <button id="btn_cancel" onclick="cancel2Dialog()">キャンセル</button>

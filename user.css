@@ -156,3 +156,10 @@ dialog2 div {
   border-radius: 4px;
   text-align: left;
 }
+
+/*登録エラー*/
+.alert {
+  /* visibility: hidden; */
+  display: none;
+  color: #d01138;
+}

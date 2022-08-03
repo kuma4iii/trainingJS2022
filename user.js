@@ -20,7 +20,7 @@ var user_data = [
     id: 1,
     last_name: "田中",
     first_name: "太郎",
-    gender: 0,
+    gender: 1,
     birth_date: "1999-01-01",
     address: "東京都",
   },
@@ -28,7 +28,7 @@ var user_data = [
     id: 2,
     last_name: "佐藤",
     first_name: "花子",
-    gender: 1,
+    gender: 2,
     birth_date: "1995-01-01",
     address: "埼玉県",
   },
@@ -36,7 +36,7 @@ var user_data = [
     id: 3,
     last_name: "伊藤",
     first_name: "二郎",
-    gender: 0,
+    gender: 1,
     birth_date: "1997-01-01",
     address: "北海道",
   },
@@ -44,9 +44,17 @@ var user_data = [
     id: 4,
     last_name: "小林",
     first_name: "優子",
-    gender: 2,
+    gender: 3,
     birth_date: "1989-01-01",
     address: "千葉県",
+  },
+  {
+    id: 5,
+    last_name: "山田",
+    first_name: "一郎",
+    gender: 1,
+    birth_date: "1999-01-01",
+    address: "東京都",
   },
 ];
 
@@ -80,8 +88,10 @@ function genderJudge(gender_num) {
   // 性別の判定
   var gender_show;
   if (gender_num == 0) {
-    gender_show = "男";
+    gender_show = "未選択";
   } else if (gender_num == 1) {
+    gender_show = "男";
+  } else if (gender_num == 2) {
     gender_show = "女";
   } else {
     gender_show = "その他";
@@ -155,12 +165,15 @@ function okDialog(button) {
     address: input_address_user.value,
   };
 
-  user_data.push(obj);
-  addUser(obj);
+  var flag = validationCheck(obj);
+  if (flag) {
+    user_data.push(obj);
+    addUser(obj);
 
-  clearInput();
+    clearInput();
 
-  dialog_user.close();
+    dialog_user.close();
+  }
 }
 
 //ユーザー登録キャンセルボタン
@@ -170,6 +183,97 @@ function cancelDialog() {
   console.log("キャンセルボタンが押下されました。");
 
   dialog_user.close();
+}
+
+function validationCheck(user_json) {
+  var totalCheck = true;
+  var last_name = user_json.last_name;
+  var first_name = user_json.first_name;
+  var gender = user_json.gender;
+  var age = birthdayCalc(user_json.birth_date);
+  var address = user_json.address;
+
+  for (var element of document.getElementsByClassName("alert")) {
+    element.style.display = "none";
+  }
+
+  //氏の長さエラー
+  if (last_name.length > 10) {
+    for (var element of document.getElementsByClassName("last_name_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //氏未入力エラー
+  if (last_name.length == 0) {
+    for (var element of document.getElementsByClassName(
+      "last_name_none_alert"
+    )) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //名の長さエラー
+  if (first_name.length > 10) {
+    for (var element of document.getElementsByClassName("first_name_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //名未入力エラー
+  if (first_name.length == 0) {
+    for (var element of document.getElementsByClassName(
+      "first_name_none_alert"
+    )) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //性別未入力エラー
+  if (gender == 0) {
+    for (var element of document.getElementsByClassName("gender_none_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //20歳未満登録エラー
+  if (age < 20) {
+    for (var element of document.getElementsByClassName("age_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //年齢未入力エラー
+  if (user_json.birth_date == "") {
+    for (var element of document.getElementsByClassName("age_none_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //住所の長さエラー
+  if (address.length > 100) {
+    for (var element of document.getElementsByClassName("address_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  //住所未入力エラー
+  if (address.length == 0) {
+    for (var element of document.getElementsByClassName("address_none_alert")) {
+      element.style.display = "block";
+    }
+    totalCheck = false;
+  }
+
+  return totalCheck;
 }
 
 function clearInput() {
@@ -194,6 +298,10 @@ function clearInput() {
   input_age_edit.value = "";
   input_gender_edit.value = "";
   input_address_edit.value = "";
+
+  for (var element of document.getElementsByClassName("alert")) {
+    element.style.display = "none";
+  }
 }
 
 var user_editting;
@@ -230,26 +338,36 @@ function ok2Dialog(button) {
   const input_gender_edit = document.getElementById("gender_edit");
   const input_address_edit = document.getElementById("address_edit");
 
-  //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
-  user_editting.last_name = input_last_name_edit.value;
-  user_editting.first_name = input_first_name_edit.value;
-  user_editting.birth_date = input_age_edit.value;
-  user_editting.gender = input_gender_edit.selectedIndex;
-  user_editting.address = input_address_edit.value;
+  var obj = {
+    id: getUniqueId(),
+    last_name: input_last_name_edit.value,
+    first_name: input_first_name_edit.value,
+    gender: input_gender_edit.selectedIndex,
+    birth_date: input_age_edit.value,
+    address: input_address_edit.value,
+  };
 
-  // 一覧の再表示
-  for (var user of user_data) {
-    //tbody要素にある最後の行（tr要素）を削除
-    var tableElem = document.getElementById("tbl");
-    tableElem.tBodies[0].deleteRow(-1);
+  var flag = validationCheck(obj);
+  if (flag) {
+    //showEditDialogでとっておいたuser_editting(編集中のユーザ)の値を変更
+    user_editting.last_name = input_last_name_edit.value;
+    user_editting.first_name = input_first_name_edit.value;
+    user_editting.birth_date = input_age_edit.value;
+    user_editting.gender = input_gender_edit.selectedIndex;
+    user_editting.address = input_address_edit.value;
 
-    //追加
-    addUser(user);
+    // 一覧の再表示
+    for (var user of user_data) {
+      //tbody要素にある最後の行（tr要素）を削除
+      var tableElem = document.getElementById("tbl");
+      tableElem.tBodies[0].deleteRow(-1);
+
+      //追加
+      addUser(user);
+    }
+    clearInput();
+    dialog_edit.close();
   }
-
-  clearInput();
-
-  dialog_edit.close();
 }
 
 //編集キャンセルボタン

@@ -2,6 +2,30 @@ window.onload = function () {
   for (var user_json of user_data) {
     addUser(user_json);
   }
+
+  let select = document.getElementById("list_sort");
+  select.onchange = (event) => {
+    if (select.selectedIndex == 0) {
+      user_data.sort(compareId);
+    }
+
+    if (select.selectedIndex == 1) {
+      user_data.sort(compareGender);
+    }
+
+    if (select.selectedIndex == 2) {
+      user_data.sort(compareBirthDate);
+    }
+
+    for (var user of user_data) {
+      //tbody要素にある最後の行（tr要素）を削除
+      var tableElem = document.getElementById("tbl");
+      tableElem.tBodies[0].deleteRow(-1);
+
+      //追加
+      addUser(user);
+    }
+  };
 };
 
 function escapeHTML(string) {
@@ -377,4 +401,37 @@ function cancel2Dialog() {
   clearInput();
 
   dialog_edit.close();
+}
+
+function compareBirthDate(a, b) {
+  var r = 0;
+  if (a.birth_date < b.birth_date) {
+    r = -1;
+  } else if (a.birth_date > b.birth_date) {
+    r = 1;
+  }
+
+  return r;
+}
+
+function compareId(a, b) {
+  var r = 0;
+  if (a.id < b.id) {
+    r = -1;
+  } else if (a.id > b.id) {
+    r = 1;
+  }
+
+  return r;
+}
+
+function compareGender(a, b) {
+  var r = 0;
+  if (a.gender < b.gender) {
+    r = -1;
+  } else if (a.gender > b.gender) {
+    r = 1;
+  }
+
+  return -1 * r;
 }

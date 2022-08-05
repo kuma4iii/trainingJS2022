@@ -66,7 +66,7 @@ var user_data = [
   },
   {
     id: 4,
-    last_name: "小林",
+    last_name: "山田",
     first_name: "優子",
     gender: 3,
     birth_date: "1989-01-01",
@@ -81,6 +81,30 @@ var user_data = [
     address: "東京都",
   },
 ];
+
+function searchList() {
+  var input_search = document.getElementById("search_form");
+  var input_text = input_search.value;
+  var searchUser = user_data;
+  var result = searchUser.filter((user) => {
+    return user.last_name === input_text || user.first_name === input_text;
+  });
+
+  console.log(result);
+
+  // 一覧の削除
+  var row = tbl.rows.length;
+  for (let i = 1; i < row; i++) {
+    //tbody要素にある最後の行（tr要素）を削除
+    var tableElem = document.getElementById("tbl");
+    tableElem.tBodies[0].deleteRow(-1);
+  }
+
+  // 検索結果のみ表示
+  for (var user of result) {
+    addUser(user);
+  }
+}
 
 function getUniqueId() {
   for (let i = 1; i < 9; i++) {

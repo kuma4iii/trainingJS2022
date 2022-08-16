@@ -157,27 +157,36 @@ function addUser(user_json) {
   var mytr = mytable.insertRow(1);
 
   //セルの追加
-  var mycell1 = mytr.insertCell(0);
+  var mycell1 = document.createElement("td");
+  var input_text = document.createElement("input");
+  input_text.setAttribute("type", "checkbox");
+  input_text.setAttribute("value", user_json.id);
+  input_text.setAttribute("class", "delete_checkbox");
+  input_text.dataset.id = user_json.id;
+  mycell1.appendChild(input_text);
+  mytr.appendChild(mycell1);
+
   var mycell2 = mytr.insertCell(1);
   var mycell3 = mytr.insertCell(2);
   var mycell4 = mytr.insertCell(3);
   var mycell5 = mytr.insertCell(4);
+  var mycell6 = mytr.insertCell(5);
 
-  mycell1.innerHTML = escapeHTML(user_json.last_name);
-  mycell2.innerHTML = escapeHTML(user_json.first_name);
-  mycell3.innerHTML = birthdayCalc(user_json.birth_date);
-  mycell4.innerHTML = genderJudge(user_json.gender);
-  mycell5.innerHTML = escapeHTML(user_json.address);
+  mycell2.innerHTML = escapeHTML(user_json.last_name);
+  mycell3.innerHTML = escapeHTML(user_json.first_name);
+  mycell4.innerHTML = birthdayCalc(user_json.birth_date);
+  mycell5.innerHTML = genderJudge(user_json.gender);
+  mycell6.innerHTML = escapeHTML(user_json.address);
 
-  var mycell6 = document.createElement("td");
+  var mycell7 = document.createElement("td");
   var input_text = document.createElement("input");
   input_text.setAttribute("type", "button");
   input_text.setAttribute("value", "編集");
   input_text.setAttribute("onclick", "showEditDialog(event)");
   input_text.setAttribute("id", user_json.id);
   input_text.dataset.user_id = user_json.id;
-  mycell6.appendChild(input_text);
-  mytr.appendChild(mycell6);
+  mycell7.appendChild(input_text);
+  mytr.appendChild(mycell7);
 }
 
 //ユーザー登録ダイアログ
@@ -458,4 +467,31 @@ function compareGender(a, b) {
   }
 
   return -1 * r;
+}
+
+function userDelete() {
+  var checkboxes = document.getElementsByClassName("delete_checkbox");
+  for (var checkbox of checkboxes) {
+    if (checkbox.checked) {
+      var searchId = user_data;
+      var result = searchId.filter((user) => {
+        return user.id !== Number(checkbox.value);
+      });
+      console.log(result);
+      user_data = result;
+    }
+  }
+
+  //一覧の削除
+  var tbl = document.getElementById("tbl");
+  var row = tbl.rows.length;
+  for (let i = 1; i < row; i++) {
+    //tbody要素にある最後の行（tr要素）を削除
+    var tableElem = document.getElementById("tbl");
+    tableElem.tBodies[0].deleteRow(-1);
+  }
+
+  for (var user_json of user_data) {
+    addUser(user_json);
+  }
 }

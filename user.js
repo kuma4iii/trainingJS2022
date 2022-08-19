@@ -179,14 +179,17 @@ function addUser(user_json) {
   mycell6.innerHTML = escapeHTML(user_json.address);
 
   var mycell7 = document.createElement("td");
-  var input_text = document.createElement("input");
-  input_text.setAttribute("type", "button");
-  input_text.setAttribute("value", "編集");
+  var input_text = document.createElement("button");
+  input_text.setAttribute(
+    "class",
+    "edit_btn btn btn-light bi bi-pencil-square"
+  );
   input_text.setAttribute("onclick", "showEditDialog(event)");
   input_text.setAttribute("id", user_json.id);
   input_text.dataset.user_id = user_json.id;
   mycell7.appendChild(input_text);
   mytr.appendChild(mycell7);
+  document.querySelector(".edit_btn").innerHTML = "編集";
 }
 
 //ユーザー登録ダイアログ

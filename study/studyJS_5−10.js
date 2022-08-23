@@ -99,7 +99,7 @@ window.onload = function () {
   ]
   //通常関数でのfind
   function isId1(user_json) {
-    return user_json.id == 1;
+    return user_json.id == 1
   }
   var user = user_json_list.find(isId1)
   console.log(user)
@@ -107,6 +107,14 @@ window.onload = function () {
 
   //課題8、9
   //window.onloadの外に記載
+
+  //課題１０
+  //id="kadaiC"のボタン押下で、valueとidをコンソールに出力する関数を"addEventListenerを使用して"作成してください。
+  //addEventListener参考↓
+  //https://www.javadrive.jp/javascript/event/index2.html
+  //ここに課題10のソースコード記載↓
+  console.log("-----------------------kadai10-----------------------")//関数内に入れてください
+
 }
 
 //課題8

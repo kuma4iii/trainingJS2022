@@ -1,16 +1,27 @@
 window.onload = function () {
   //課題１
   //拡張For文を使って「apple」だけをコンソールに出力してください。
-  let fluits = ["banana", "lemmon", "apple", "grape", "banana"]
-  console.log("-----------------------kadai1-----------------------")
+  let fluits = ["banana", "lemmon", "apple", "grape", "banana"];
+  console.log("-----------------------kadai1-----------------------");
   //ここに課題１のソースコード記載↓
-
+  for (var fluit of fluits) {
+    if (fluit == fluits[2]) {
+      console.log(fluit);
+    }
+  }
 
   //課題２
   //拡張For文を使って「banana」を２回コンソールに出力してください。
-  console.log("-----------------------kadai2-----------------------")
+  console.log("-----------------------kadai2-----------------------");
   //ここに課題２のソースコード記載↓
-
+  for (var i = 0; i < 2; ) {
+    for (var fluit of fluits) {
+      if (fluit == fluits[0]) {
+        console.log(fluit);
+        i = i + 1;
+      }
+    }
+  }
 
   //課題３
   //拡張For文を使って「idが3のユーザの氏名」をコンソールに出力してください。
@@ -55,17 +66,25 @@ window.onload = function () {
       birth_date: "1999-01-01",
       address: "東京都",
     },
-  ]
-  console.log("-----------------------kadai3-----------------------")
+  ];
+  console.log("-----------------------kadai3-----------------------");
   //ここに課題３のソースコード記載↓
-
+  for (var user of user_json_list) {
+    if (user.id == 3) {
+      console.log(user.last_name + user.first_name);
+    }
+  }
 
   //課題４
   //拡張For文とoutputFirstNameを使って男性のユーザのファーストネームだけをコンソールに出力してください。
   function outputFirstName(user_json) {
-    console.log(user_json.first_name)
+    console.log(user_json.first_name);
   }
-  console.log("-----------------------kadai4-----------------------")
+  console.log("-----------------------kadai4-----------------------");
   //ここに課題４のソースコード記載↓
-
+};
+for (var user of user_json_list) {
+  if (user.gender == 1) {
+    outputFirstName();
+  }
 }

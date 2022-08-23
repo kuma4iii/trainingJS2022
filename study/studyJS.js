@@ -14,12 +14,9 @@ window.onload = function () {
   //拡張For文を使って「banana」を２回コンソールに出力してください。
   console.log("-----------------------kadai2-----------------------");
   //ここに課題２のソースコード記載↓
-  for (var i = 0; i < 2; ) {
-    for (var fluit of fluits) {
-      if (fluit == fluits[0]) {
-        console.log(fluit);
-        i = i + 1;
-      }
+  for (var fluit of fluits) {
+    if (fluit == "banana") {
+      console.log(fluit);
     }
   }
 

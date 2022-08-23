@@ -82,9 +82,9 @@ window.onload = function () {
   }
   console.log("-----------------------kadai4-----------------------");
   //ここに課題４のソースコード記載↓
-};
-for (var user of user_json_list) {
-  if (user.gender == 1) {
-    outputFirstName();
+  for (var user_json of user_json_list) {
+    if (user_json.gender == 1) {
+      outputFirstName(user_json);
+    }
   }
-}
+};

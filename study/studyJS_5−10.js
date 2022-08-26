@@ -104,6 +104,7 @@ window.onload = function () {
   var user = user_json_list.find(isId1)
   console.log(user)
   //ここに課題7のソースコード記載↓
+  let isId1func()
 
   //課題8、9
   //window.onloadの外に記載

@@ -51,22 +51,28 @@ function clearInput() {
   const input_age_user = document.getElementById("age_user");
   const input_gender_user = document.getElementById("gender_user");
   const input_address_user = document.getElementById("address_user");
+  const input_search_address = document.getElementById("search_address");
   const input_last_name_edit = document.getElementById("last_name_edit");
   const input_first_name_edit = document.getElementById("first_name_edit");
   const input_age_edit = document.getElementById("age_edit");
   const input_gender_edit = document.getElementById("gender_edit");
   const input_address_edit = document.getElementById("address_edit");
+  const input_search_address_edit = document.getElementById(
+    "search_address_edit"
+  );
 
   input_last_name_user.value = "";
   input_first_name_user.value = "";
   input_age_user.value = "";
   input_gender_user.value = "";
   input_address_user.value = "";
+  input_search_address.value = "";
   input_last_name_edit.value = "";
   input_first_name_edit.value = "";
   input_age_edit.value = "";
   input_gender_edit.value = "";
   input_address_edit.value = "";
+  input_search_address_edit.value = "";
 
   for (var element of document.getElementsByClassName("alert")) {
     element.style.display = "none";

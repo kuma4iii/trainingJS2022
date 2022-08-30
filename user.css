@@ -132,3 +132,17 @@ dialog2 div {
   display: none;
   color: #d01138;
 }
+
+.error {
+  /* visibility: hidden; */
+  display: none;
+  color: #d01138;
+}
+
+/*#error_a {
+  color: #d01138;
+}
+
+#error_b {
+  color: #d01138;
+}*/

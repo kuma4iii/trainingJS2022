@@ -73,6 +73,7 @@
             class="zipcode"
             type="text"
             name="zipcode"
+            maxlength="7"
             value=""
             placeholder="例)1001001"
           />
@@ -85,12 +86,7 @@
             住所検索
           </button>
           <br />
-          <p class="address_error_alert alert">
-            郵便番号を正しく入力してください。
-          </p>
-          <p class="address_defind_alert alert">
-            郵便番号から住所が見つかりませんでした。
-          </p>
+          <p id="error_a" class="error"></p>
           <textarea
             type="text"
             cols="50"
@@ -99,10 +95,6 @@
             maxlength="100"
             value=""
           ></textarea>
-          <p class="address_alert alert">
-            住所は100文字以内で入力してください。
-          </p>
-          <p class="address_none_alert alert">住所は必須項目です。</p>
         </div>
         <!-- 登録ダイアログ内のボタン -->
         <button
@@ -158,6 +150,7 @@
             class="zipcode"
             type="text"
             name="zipcode"
+            maxlength="7"
             value=""
             placeholder="例)1001001"
           />
@@ -170,12 +163,7 @@
             住所検索
           </button>
           <br />
-          <p class="address_error_alert alert">
-            郵便番号を正しく入力してください。
-          </p>
-          <p class="address_defind_alert alert">
-            郵便番号から住所が見つかりませんでした。
-          </p>
+          <p id="error_b" class="error"></p>
           <textarea
             type="text"
             cols="50"

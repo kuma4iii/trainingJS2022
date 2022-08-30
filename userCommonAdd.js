@@ -77,4 +77,8 @@ function clearInput() {
   for (var element of document.getElementsByClassName("alert")) {
     element.style.display = "none";
   }
+
+  for (var element of document.getElementsByClassName("error")) {
+    element.style.display = "none";
+  }
 }

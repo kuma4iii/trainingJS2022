@@ -4,57 +4,60 @@ window.onload = function () {
   //以下の二つの処理に違いはありません。(正確には少しあります。課題6に記述)
   //プログラミングの考え方として、基本的には短く簡易的なコードが望まれるので、積極的に使用して慣れましょう。
   //記述なしの課題、読んで理解
-  console.log("-----------------------kadai5-----------------------")
-  let fluits = ["banana", "lemmon", "apple", "grape", "banana"]
-  fluits.map(
-    fluit => {
-      if (fluit == "lemmon") {
-        console.log("出力1: " + fluit)
-      }
+  console.log("-----------------------kadai5-----------------------");
+  let fluits = ["banana", "lemmon", "apple", "grape", "banana"];
+  fluits.map((fluit) => {
+    if (fluit == "lemmon") {
+      console.log("出力1: " + fluit);
     }
-  )
-  fluits.map(
-    function (fluit) {
-      if (fluit == "lemmon") {
-        console.log("出力2: " + fluit)
-      }
+  });
+  fluits.map(function (fluit) {
+    if (fluit == "lemmon") {
+      console.log("出力2: " + fluit);
     }
-  )
+  });
 
   //課題6
   //アロー関数で大きく異なるのはthisの参照先です。（ちょっと難しいので完全に理解しなくても大丈夫です。）
   //記述なしの課題、読んで理解
-  console.log("-----------------------kadai6-----------------------")
+  console.log("-----------------------kadai6-----------------------");
   //グローバル変数
-  window.color = 'red'
+  window.color = "red";
 
   //アロー関数
   let arrowFunc = (tag) => {
-    console.log(tag + this.color)
-  }
+    console.log(tag + this.color);
+  };
   let obj1 = {
-    color: 'yellow',
-    func: arrowFunc
-  }
-  arrowFunc("直接呼び出したアロー関数の場合、this.colorはグローバル関数のred（２７行目）を参照: ")
-  obj1.func("Objectを指定したアロー関数の場合、this.colorはグローバル関数のred（２７行目）を参照: ")
+    color: "yellow",
+    func: arrowFunc,
+  };
+  arrowFunc(
+    "直接呼び出したアロー関数の場合、this.colorはグローバル関数のred（２７行目）を参照: "
+  );
+  obj1.func(
+    "Objectを指定したアロー関数の場合、this.colorはグローバル関数のred（２７行目）を参照: "
+  );
 
   //通常の関数
   let sampleFunc = function (tag) {
-    console.log(tag + this.color)
-  }
+    console.log(tag + this.color);
+  };
   let obj2 = {
-    color: 'yellow',
-    func: sampleFunc
-  }
-  sampleFunc("直接呼び出した通常関数の場合、this.colorはグローバル関数のred（２７行目）を参照: ")
-  obj2.func("Objectを指定した通常関数の場合、this.colorはyellow（４９行目）を参照: ")
-
+    color: "yellow",
+    func: sampleFunc,
+  };
+  sampleFunc(
+    "直接呼び出した通常関数の場合、this.colorはグローバル関数のred（２７行目）を参照: "
+  );
+  obj2.func(
+    "Objectを指定した通常関数の場合、this.colorはyellow（４９行目）を参照: "
+  );
 
   //課題7
   //以下のfind処理は通常関数を使用してidが1のユーザを検索し、コンソールに表示しているものです。
   //アロー関数を使用した、簡易版を記述してください。
-  console.log("-----------------------kadai7-----------------------")
+  console.log("-----------------------kadai7-----------------------");
   var user_json_list = [
     {
       id: 1,
@@ -96,15 +99,16 @@ window.onload = function () {
       birth_date: "1999-01-01",
       address: "東京都",
     },
-  ]
+  ];
   //通常関数でのfind
   function isId1(user_json) {
-    return user_json.id == 1
+    return user_json.id == 1;
   }
-  var user = user_json_list.find(isId1)
-  console.log(user)
+  var user = user_json_list.find(isId1);
+  console.log(user);
   //ここに課題7のソースコード記載↓
-  let isId1func()
+  let isId1func = (user_json) => {};
+  var user_json = user_json_list;
 
   //課題8、9
   //window.onloadの外に記載
@@ -114,25 +118,24 @@ window.onload = function () {
   //addEventListener参考↓
   //https://www.javadrive.jp/javascript/event/index2.html
   //ここに課題10のソースコード記載↓
-  console.log("-----------------------kadai10-----------------------")//関数内に入れてください
-
-}
+  console.log("-----------------------kadai10-----------------------"); //関数内に入れてください
+};
 
 //課題8
 //以下は呼び出されたら第一引数であるvalueをコンソール出力する関数
 //HTML側のボタンクリックで呼び出し
 let clickSampleKadai8 = (value) => {
   //引数については「,」区切りで複数指定できる
-  console.log("-----------------------kadai8 sample-----------------------")
-  console.log(value)
-}
+  console.log("-----------------------kadai8 sample-----------------------");
+  console.log(value);
+};
 //id="kadaiA"のボタン押下で、valueとidをコンソールに出力する関数を作成してください。
 //条件：引数２つ
 //ここに課題8のソースコード記載↓
-console.log("-----------------------kadai8-----------------------")//関数内に入れてください
+console.log("-----------------------kadai8-----------------------"); //関数内に入れてください
 
 //課題9
 //id="kadaiB"のボタン押下で、valueとidをコンソールに出力する関数を作成してください。
 //条件：引数１つ
 //ここに課題9のソースコード記載↓
-console.log("-----------------------kadai9-----------------------")//関数内に入れてください
+console.log("-----------------------kadai9-----------------------"); //関数内に入れてください

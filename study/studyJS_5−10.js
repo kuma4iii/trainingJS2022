@@ -107,8 +107,9 @@ window.onload = function () {
   var user = user_json_list.find(isId1);
   console.log(user);
   //ここに課題7のソースコード記載↓
-  let isId1func = (user_json) => {};
-  var user_json = user_json_list;
+
+  var user = user_json_list.find((v) => v.id == 1);
+  console.log(user);
 
   //課題8、9
   //window.onloadの外に記載
@@ -118,7 +119,16 @@ window.onload = function () {
   //addEventListener参考↓
   //https://www.javadrive.jp/javascript/event/index2.html
   //ここに課題10のソースコード記載↓
-  console.log("-----------------------kadai10-----------------------"); //関数内に入れてください
+  let button = document.getElementById("kadaiC");
+  button.addEventListener("click", buttonClick);
+  function buttonClick() {
+    let value = document.getElementById("CCCC");
+    let id = document.getElementById("kadaiC");
+    console.log("-----------------------kadai10-----------------------");
+    console.log("課題１０: value = " + value + ", id = " + id);
+  }
+  //関数内に入れてください
+  //詰まったのでいったん保留
 };
 
 //課題8
@@ -132,10 +142,19 @@ let clickSampleKadai8 = (value) => {
 //id="kadaiA"のボタン押下で、valueとidをコンソールに出力する関数を作成してください。
 //条件：引数２つ
 //ここに課題8のソースコード記載↓
-console.log("-----------------------kadai8-----------------------"); //関数内に入れてください
+let kadai8btn = (value, id) => {
+  console.log("-----------------------kadai8-----------------------");
+  console.log("課題８: value = " + value + ", id =" + id);
+}; //関数内に入れてください
 
 //課題9
 //id="kadaiB"のボタン押下で、valueとidをコンソールに出力する関数を作成してください。
 //条件：引数１つ
 //ここに課題9のソースコード記載↓
-console.log("-----------------------kadai9-----------------------"); //関数内に入れてください
+
+let kadai9btn = () => {
+  console.log("-----------------------kadai9-----------------------");
+  console.log(value + id);
+};
+//関数内に入れてください
+//引数１つで呼び出す方法がわからなかったため保留

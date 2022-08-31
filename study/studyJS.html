@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script src="studyJS_1-4.js"></script>
+    <script src="studyJS_5−10.js"></script>
+  </head>
 
-<head>
-  <script src="studyJS_1-4.js"></script>
-  <script src="studyJS_5−10.js"></script>
-</head>
-
-<body>
-  <h1>デベロッパーツールを開いて、コンソールを確認</h1>
-  <h3>↓サンプル↓</h3>
-  <div>
-    <!-- clickSampleKadai8の呼び出しにthis.valueを指定 -->
-    <!-- HTMLでのthisは「私自身」みたいなもので、この場合はそれぞれのbutton要素を指す -->
-    <button value="AAAA" onclick="clickSampleKadai8(this.value)">課題８サンプル: value = AAAA</button>
-    <!-- この場合のthis.valueはAAAAを指す -->
-    <button value="BBBB" onclick="clickSampleKadai8(this.value)">課題８サンプル: value = BBBB</button>
-    <button value="CCCC" onclick="clickSampleKadai8(this.value)">課題８サンプル: value = CCCC</button>
-  </div>
-  <h3>↓課題８〜９↓</h3>
-  <div>
-    <button value="AAAA" id="kadaiA" onclick="">課題８: value = AAAA, id =kadaiA</button>
-    <button value="BBBB" id="kadaiB" onclick="">課題９: value = BBBB, id =kadaiB</button>
-    <button value="CCCC" id="kadaiC">課題１０: value = CCCC, id =kadaiC</button>
-  </div>
-</body>
-
+  <body>
+    <h1>デベロッパーツールを開いて、コンソールを確認</h1>
+    <h3>↓サンプル↓</h3>
+    <div>
+      <!-- clickSampleKadai8の呼び出しにthis.valueを指定 -->
+      <!-- HTMLでのthisは「私自身」みたいなもので、この場合はそれぞれのbutton要素を指す -->
+      <button value="AAAA" onclick="clickSampleKadai8(this.value)">
+        課題８サンプル: value = AAAA
+      </button>
+      <!-- この場合のthis.valueはAAAAを指す -->
+      <button value="BBBB" onclick="clickSampleKadai8(this.value)">
+        課題８サンプル: value = BBBB
+      </button>
+      <button value="CCCC" onclick="clickSampleKadai8(this.value)">
+        課題８サンプル: value = CCCC
+      </button>
+    </div>
+    <h3>↓課題８〜９↓</h3>
+    <div>
+      <button value="AAAA" id="kadaiA" onclick="kadai8btn(this.value, id)">
+        課題８: value = AAAA, id =kadaiA
+      </button>
+      <button value="BBBB" id="kadaiB" onclick="kadai9btn(this.value, id)">
+        課題９: value = BBBB, id =kadaiB
+      </button>
+      <button value="CCCC" id="kadaiC">
+        課題１０: value = CCCC, id =kadaiC
+      </button>
+    </div>
+  </body>
 </html>

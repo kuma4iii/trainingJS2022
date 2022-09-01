@@ -119,16 +119,23 @@ window.onload = function () {
   //addEventListener参考↓
   //https://www.javadrive.jp/javascript/event/index2.html
   //ここに課題10のソースコード記載↓
-  let button = document.getElementById("kadaiC");
-  button.addEventListener("click", buttonClick);
-  function buttonClick() {
-    let value = document.getElementById("CCCC");
-    let id = document.getElementById("kadaiC");
-    console.log("-----------------------kadai10-----------------------");
-    console.log("課題１０: value = " + value + ", id = " + id);
+  let buttonC = document.getElementById("kadaiC");
+  buttonC.addEventListener("click", buttonClick(buttonC));
+
+  function buttonClick(button) {
+    //let value = button.getAttribute("CCCC");
+    //let id = document.getElementById("kadaiC");
+    console.log("-----------------------kadai10,11-----------------------");
+    console.log(
+      "課題１０，１１: value = " + button.value + ", id = " + button.id
+    );
   }
   //関数内に入れてください
   //詰まったのでいったん保留
+
+  //課題１１
+  let buttonD = document.getElementById("kadaiD");
+  buttonD.addEventListener("click", buttonClick(buttonD));
 };
 
 //課題8
@@ -152,9 +159,9 @@ let kadai8btn = (value, id) => {
 //条件：引数１つ
 //ここに課題9のソースコード記載↓
 
-let kadai9btn = () => {
+let kadai9btn = (button) => {
   console.log("-----------------------kadai9-----------------------");
-  console.log(value + id);
+  console.log(button.value + button.id);
 };
 //関数内に入れてください
 //引数１つで呼び出す方法がわからなかったため保留

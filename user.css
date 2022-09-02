@@ -7,70 +7,32 @@ body {
   text-align: center;
 }
 
-/*ユーザー一覧*/
 h1 {
-  position: relative;
-  display: inline-block;
-  height: 32px;
-  margin-left: 30px;
-  padding: 1rem 2rem 1rem 3rem;
+  padding: 1rem 3rem;
   color: #fff;
-  background: #3f6d4da4;
-}
-h1:before {
-  position: absolute;
-  top: 0;
-  left: -30px;
-  content: "";
-  border-width: 32px 30px 32px 0;
-  border-style: solid;
-  border-color: transparent #3f6d4da4 transparent transparent;
-}
-h1:after {
-  position: absolute;
-  top: calc(50% - 7px);
-  left: -10px;
-  width: 14px;
-  height: 14px;
-  content: "";
-  border-radius: 50%;
-  background: #fff;
-}
-
-/*登録済みユーザー*/
-h2 {
-  position: relative;
-  padding: 1em 2em;
-  text-align: center;
-}
-h2:before,
-h2:after {
-  position: absolute;
-  content: "";
-}
-h2:after {
-  top: 0;
-  left: 500px;
-  width: 50px;
-  height: 50px;
-  border-top: 2px solid #000;
-  border-left: 2px solid #000;
-}
-h2:before {
-  right: 500px;
-  bottom: 0;
-  width: 50px;
-  height: 50px;
-  border-right: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-radius: 100vh;
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    from(#bfe0a293),
+    to(#c868e681)
+  );
+  background-image: -webkit-linear-gradient(
+    right,
+    #bfe0a293 0%,
+    #c868e681 100%
+  );
+  background-image: linear-gradient(to left, #bfe0a293 0%, #c868e681 100%);
 }
 
 /*テーブルのレイアウト*/
-table {
-  width: auto;
+#tbl {
+  width: 90%;
   border-collapse: separate;
   border-spacing: 0;
   margin: auto;
+  text-align: center;
 }
 table th:nth-child(1) {
   width: 5%;
@@ -146,6 +108,9 @@ dialog div {
   padding: 10px;
   border-radius: 4px;
   text-align: left;
+}
+.btn-close {
+  float: right;
 }
 
 /*編集ダイアログ*/

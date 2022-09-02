@@ -1,6 +1,10 @@
 window.onload = function () {
   for (var user_json of user_data) {
     addUser(user_json);
+
+    for (var element of document.getElementsByClassName("redisplay")) {
+      element.style.display = "none";
+    }
   }
 
   let select = document.getElementById("list_sort");
@@ -104,6 +108,13 @@ function searchList() {
   for (var user of result) {
     addUser(user);
   }
+
+  for (var element of document.getElementsByClassName("redisplay")) {
+    element.style.display = "block";
+  }
+  totalCheck = false;
+
+  document.getElementById("redisplay_btn").innerHTML = input_text;
 }
 
 //ユーザー登録ダイアログ
@@ -259,4 +270,26 @@ function userDelete() {
   for (var user_json of user_data) {
     addUser(user_json);
   }
+}
+
+//検索条件削除機能
+function redisplay() {
+  var tbl = document.getElementById("tbl");
+  var row = tbl.rows.length;
+  for (let i = 1; i < row; i++) {
+    //tbody要素にある最後の行（tr要素）を削除
+    var tableElem = document.getElementById("tbl");
+    tableElem.tBodies[0].deleteRow(-1);
+  }
+
+  for (var user_json of user_data) {
+    addUser(user_json);
+  }
+
+  for (var element of document.getElementsByClassName("redisplay")) {
+    element.style.display = "none";
+  }
+
+  const input_search_form = document.getElementById("search_form");
+  input_search_form.value = "";
 }

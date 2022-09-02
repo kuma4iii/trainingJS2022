@@ -139,10 +139,9 @@ dialog2 div {
   color: #d01138;
 }
 
-/*#error_a {
-  color: #d01138;
+/*検索ワードボタン*/
+.redisplay {
+  display: none;
+  table-layout: fixed;
+  margin: auto;
 }
-
-#error_b {
-  color: #d01138;
-}*/

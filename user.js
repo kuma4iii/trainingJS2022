@@ -1,10 +1,10 @@
 window.onload = function () {
   for (var user_json of user_data) {
     addUser(user_json);
+  }
 
-    for (var element of document.getElementsByClassName("redisplay")) {
-      element.style.display = "none";
-    }
+  for (var element of document.getElementsByClassName("redisplay")) {
+    element.style.display = "none";
   }
 
   let select = document.getElementById("list_sort");

@@ -31,19 +31,27 @@ function commonSearch(aaa, bbb, eee) {
       return response.json();
     })
     .then((data) => {
-      if (data.status === 400) {
+      if (data.status === 200) {
+        if (data.results !== null) {
+          bbb.value =
+            data.results[0].address1 +
+            data.results[0].address2 +
+            data.results[0].address3;
+        } else {
+          eee.textContent = "郵便番号から住所が見つかりませんでした。";
+          for (var element of document.getElementsByClassName("error")) {
+            element.style.display = "block";
+          }
+          totalCheck = false;
+        }
+      } else if (data.status === 400) {
         eee.textContent = data.message;
-      } else if (data.results === null) {
-        eee.textContent = "郵便番号から住所が見つかりませんでした。";
         for (var element of document.getElementsByClassName("error")) {
           element.style.display = "block";
         }
         totalCheck = false;
       } else {
-        bbb.value =
-          data.results[0].address1 +
-          data.results[0].address2 +
-          data.results[0].address3;
+        eee.textContent = "予期せぬ処理が起こりました。";
         for (var element of document.getElementsByClassName("error")) {
           element.style.display = "block";
         }

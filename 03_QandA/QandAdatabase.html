@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script>
+    function Proc() {
+    var db = OpenMyDatabase();
+    CreateTable(db);
+    }
+
+    function OpenMyDatabase() {
+    var dbsize = 1000;
+    var dbname = "qaDB";
+    var dbversion = "1.0";
+    var dbdescription = "QandAdatabase"
+    var db = window.openDatabase(dbname, dbversion, dbdescription, dbsize);
+    if (db == null) {
+    alert("データベースが開けませんでした。");
+    }
+    return db;
+    }
+
+    function CreateTable(dbobj) {
+      dbobj.transaction(
+        function dbControl(transact) {
+          transact.executeSql("CREATE TABLE user_info (id PRIMARY KEY, user_name , login_id , login_password , image_name , insert_dt , update_dt , del_flg )", [],
+            function message() { alert("CREATE TABLE SUCCESS"); },
+            function message() { alert("CREATE TABLE ERROR"); }
+           );
+          transact.executeSql("INSERT INTO user_info (id, user_name, login_id, login_password, image_name, insert_dt, update_dt, del_flg) values(?, ?, ?, ?, ?, ?, ?, ?)", [1, '田中（JavaScript、angular）', 'user01', 'password', 'boy_02.png', '', '', 'false'],
+            function message() { alert("INSERT DATA 1 SUCCESS"); },
+            function message() { alert("INSERT DATA 1 ERROR"); }
+          );
+          transact.executeSql("INSERT INTO user_info (id, user_name, login_id, login_password, image_name, insert_dt, update_dt, del_flg) values(?, ?, ?, ?, ?, ?, ?, ?)", [2, 'yamamoto yoko', 'user02', 'password', 'girl_18.png', '', '', 'false'],
+            function message() { alert("INSERT DATA 2 SUCCESS"); },
+            function message() { alert("INSERT DATA 2 ERROR"); }
+          );
+          transact.executeSql("INSERT INTO user_info (id, user_name, login_id, login_password, image_name, insert_dt, update_dt, del_flg) values(?, ?, ?, ?, ?, ?, ?, ?)", [3, 'Koukiフリーランス', 'user03', 'password', 'youngman_33.png', '', '', 'false'],
+            function message() { alert("INSERT DATA 3 SUCCESS"); },
+            function message() { alert("INSERT DATA 3 ERROR"); }
+          );
+          transact.executeSql("INSERT INTO user_info (id, user_name, login_id, login_password, image_name, insert_dt, update_dt, del_flg) values(?, ?, ?, ?, ?, ?, ?, ?)", [4, 'ヤマモト', 'user04', 'password', 'youngman_33.png', '', '', 'false'],
+            function message() { alert("INSERT DATA 4 SUCCESS"); },
+            function message() { alert("INSERT DATA 4 ERROR"); }
+          );
+        }
+      );
+    }
+    </script>
+</head>
+<body>
+    <p>テーブルの作成 テストページ</p>
+    <a href="javascript:Proc();">CreateTable</a><br />
+</body>
+</html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript" src="loginPage.js"></script>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="QandA.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -29,10 +30,9 @@
                     パスワード： <input type="text" id="user_password" maxlength="15"/>
                     <br>
                     <br>
-                    <button id="login_button" type="button" class="btn btn-outline-primary"><i class="bi bi-check-square"></i>ログイン</button>
-                    <p class="login_id_alert alert">ユーザーIDが正しくありません。</p>
-                    <p class="login_pw_alert alert">パスワードが正しくありません。</p>
+                    <button id="login_button" type="button" class="btn btn-outline-primary" onclick="signUp()"><i class="bi bi-check-square"></i>ログイン</button>
                 </div>
+                <p class="alert">ログインできませんでした。</p>
             </div>
         </body>
 </html>

@@ -33,12 +33,12 @@ function signUp(){
 
                         var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
 
-                        if(user_id.value ==""){
+                        if(user_id ==""){
                             for (var element of document.getElementsByClassName("id_alert")) {
                                 element.style.display = "block";
                             }
                         }
-                        if(user_password.value==""){
+                        if(user_password==""){
                             for (var element of document.getElementsByClassName("pass_alert")) {
                                 element.style.display = "block";
                             }
@@ -70,7 +70,7 @@ function signUp(){
 
                             if(JSON.stringify(id_pass_set) === JSON.stringify(row_set)){
                             //画面遷移
-                                location.href = "file:///D:/IdeaProjects/trainingJS/03_QandA/QandAPostPage.html";
+                                location.href = "QandAPostPage.html";
                                 break;
                             }else if(JSON.stringify(id_pass_set) !== JSON.stringify(row_set)){
                                 for (var element of document.getElementsByClassName("login_alert")) {
